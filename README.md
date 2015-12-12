@@ -11,3 +11,4 @@
 
 - Trello ： <https://trello.com/b/p7LxuXdG/ntnu2015-team1-lib-system>
 - Google spreadsheet：https://docs.google.com/spreadsheets/d/1pZfvRTliU1nalqZyr1SEZxVuzARgoOF5eMXDv6NiLZs/edit#gid=0
+- Jenkins: http://140.122.185.182:8080/
