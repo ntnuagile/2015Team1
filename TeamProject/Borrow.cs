@@ -9,7 +9,8 @@ namespace TeamProject
 	public class Borrow
 	{
 		public int id { get; set; }
-		internal void BorrowBook(int id, Book b)
+		public string name { get; set; }
+		internal void BorrowBook(Book book, String name)
 		{
 			throw new NotImplementedException();
 		}

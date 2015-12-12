@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TeamProject
 {
+
 	public class Book
 	{
 		public int ISBN;
@@ -14,5 +15,6 @@ namespace TeamProject
 		public string seller;
 		public int price;
 		public string location;
+		public int status; //1=avalible
 	}
 }
