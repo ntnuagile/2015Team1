@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TeamProject
 {
-	class Accounts
+	public class Borrow
 	{
+		public int id { get; set; }
+		internal void BorrowBook(int id, Book b)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
