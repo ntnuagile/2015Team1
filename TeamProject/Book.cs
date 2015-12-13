@@ -9,7 +9,7 @@ namespace TeamProject
 
 	public class Book
 	{
-		public int ISBN;
+		public string ISBN;
 		public string title;
 		public string author;
 		public string seller;

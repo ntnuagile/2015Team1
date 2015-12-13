@@ -15,14 +15,15 @@ namespace TeamProject.Tests
         {
             Assert.That(1 + 1, Is.EqualTo(2));
         }
+
 		[Test]
 		public void Borrow1()
 		{
 			Book book1 = new Book();
-			book1.ISBN = 1;
+			book1.ISBN = "1";
 			book1.title = "This is a Book";
 			book1.price = 200;
-			book1.location = "Gong Guang Liarary";
+			book1.location = "Gong Guang Library";
 			book1.seller = "Google";
 			book1.status = 1;
 
@@ -32,22 +33,41 @@ namespace TeamProject.Tests
 			Assert.That(b.name, Is.EqualTo("Mandy"));
 			Assert.That(b.id, Is.EqualTo(1));
 		}
-        [Test]
-        public void Borrow2()
-        {
-            Book book2 = new Book();
-            book2.ISBN = 1;
-            book2.title = "Computer Science";
-            book2.price = 1000;
-            book2.location = "Gong Guang Liarary";
-            book2.seller = "Pearson";
-            book2.status = 1;
 
-            Borrow b = new Borrow();
-            String name = "Jerry";
-            b.BorrowBook(book2, name);
-            Assert.That(b.name, Is.EqualTo("Jerry"));
-            Assert.That(b.id, Is.EqualTo(1));
-        }
+		[Test]
+		public void Borrow2()
+		{
+			Book book2 = new Book();
+			book2.ISBN = "2";
+			book2.title = "Computer Science";
+			book2.price = 1000;
+			book2.location = "Gong Guang Library";
+			book2.seller = "Pearson";
+			book2.status = 1;
+
+			Borrow b = new Borrow();
+			String name = "Jerry";
+			b.BorrowBook(book2, name);
+			Assert.That(b.name, Is.EqualTo("Jerry"));
+			Assert.That(b.id, Is.EqualTo(1));
+		}
+
+		[Test]
+		public void Borrow3()
+		{
+			Book book3 = new Book();
+			book3.ISBN = "0262033844";
+			book3.title = "Introduction to algorithm";
+			book3.price = 1107;
+			book3.location = "LinCo Library";
+			book3.seller = "Simpson";
+			book3.status = 1;
+
+			Borrow b = new Borrow();
+			String name = "Wildsky";
+			b.BorrowBook(book3, name);
+			Assert.That(b.name, Is.EqualTo("Wildsky"));
+			Assert.That(b.id, Is.EqualTo(1));
+		}
     }
 }
