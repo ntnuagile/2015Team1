@@ -13,7 +13,7 @@ namespace TeamProject.Tests
         [Test]
         public void Test1()
         {
-            Assert.That(1 + 1, Is.EqualTo(0));
+            Assert.That(1 + 1, Is.EqualTo(2));
         }
 
 		[Test]
@@ -73,8 +73,7 @@ namespace TeamProject.Tests
 		[Test]
 		public void RyanWeng()
 		{
-			Assert.That(40247037,Is.EqualTo(402470371));
-
+			Assert.That(40247037,Is.EqualTo(40247037));
 		}
     }
 }
