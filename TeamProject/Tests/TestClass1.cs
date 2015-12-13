@@ -70,6 +70,24 @@ namespace TeamProject.Tests
 			Assert.That(b.id, Is.EqualTo(1));
 		}
 
+        [Test]
+		public void Borrow4()
+		{
+			Book book4 = new Book();
+			book4.ISBN = "1515151515";
+			book4.title = "Knicks";
+			book4.price = 2015;
+			book4.location = "New York";
+			book4.seller = "Carmelo Anthony";
+			book4.status = 1;
+
+			Borrow b = new Borrow();
+			String name = "Jeremy";
+			b.BorrowBook(book4, name);
+			Assert.That(b.name, Is.EqualTo("Jeremy"));
+			Assert.That(b.id, Is.EqualTo(1));
+		}
+
 		[Test]
 		public void RyanWeng()
 		{
