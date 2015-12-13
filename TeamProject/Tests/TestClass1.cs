@@ -32,5 +32,22 @@ namespace TeamProject.Tests
 			Assert.That(b.name, Is.EqualTo("Mandy"));
 			Assert.That(b.id, Is.EqualTo(1));
 		}
+        [Test]
+        public void Borrow2()
+        {
+            Book book2 = new Book();
+            book2.ISBN = 1;
+            book2.title = "Computer Science";
+            book2.price = 1000;
+            book2.location = "Gong Guang Liarary";
+            book2.seller = "Pearson";
+            book2.status = 1;
+
+            Borrow b = new Borrow();
+            String name = "Jerry";
+            b.BorrowBook(book2, name);
+            Assert.That(b.name, Is.EqualTo("Jerry"));
+            Assert.That(b.id, Is.EqualTo(1));
+        }
     }
 }
