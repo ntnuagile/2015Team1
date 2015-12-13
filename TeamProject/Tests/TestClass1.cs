@@ -69,5 +69,12 @@ namespace TeamProject.Tests
 			Assert.That(b.name, Is.EqualTo("Wildsky"));
 			Assert.That(b.id, Is.EqualTo(1));
 		}
+
+		[Test]
+		public void RyanWeng()
+		{
+			Assert.That(40247037,Is.EqualTo(40247037));
+
+		}
     }
 }
