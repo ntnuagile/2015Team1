@@ -8,11 +8,13 @@ namespace TeamProject
 {
 	public class Borrow
 	{
-		public int id { get; set; }
-		public string name { get; set; }
+        private string id_;
+        private string name_;
+		public string id() { return id_; }
+		public string name() { return name_; }
 		internal void BorrowBook(Book book, String name)
 		{
-			throw new NotImplementedException();
+            id_ = book.ISBN;
 		}
 	}
 }

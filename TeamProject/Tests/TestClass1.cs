@@ -30,8 +30,8 @@ namespace TeamProject.Tests
 			Borrow b = new Borrow();
 			String name = "Mandy";
 			b.BorrowBook(book1, name);
-			Assert.That(b.name, Is.EqualTo("Mandy"));
-			Assert.That(b.id, Is.EqualTo(1));
+			Assert.That(b.name(), Is.EqualTo("Mandy"));
+			Assert.That(b.id(), Is.EqualTo("1"));
 		}
 
 		[Test]
@@ -48,11 +48,11 @@ namespace TeamProject.Tests
 			Borrow b = new Borrow();
 			String name = "Jerry";
 			b.BorrowBook(book2, name);
-			Assert.That(b.name, Is.EqualTo("Jerry"));
-			Assert.That(b.id, Is.EqualTo(1));
+			Assert.That(b.name(), Is.EqualTo("Jerry"));
+			Assert.That(b.id(), Is.EqualTo("2"));
 		}
 
-		[Test]
+		/*[Test]
 		public void Borrow3()
 		{
 			Book book3 = new Book();
@@ -87,7 +87,7 @@ namespace TeamProject.Tests
 			Assert.That(b.name, Is.EqualTo("Jeremy"));
 			Assert.That(b.id, Is.EqualTo(1));
 		}
-
+        */
 		[Test]
 		public void RyanWeng()
 		{
