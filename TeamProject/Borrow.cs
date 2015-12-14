@@ -15,6 +15,7 @@ namespace TeamProject
 		internal void BorrowBook(Book book, String name)
 		{
             id_ = book.ISBN;
+            name_ = name;
 		}
 	}
 }
