@@ -12,10 +12,6 @@ namespace TeamProject
         private string name_;
 		public string id() { return id_; }
 		public string name() { return name_; }
-		internal void BorrowBook(Book book, String name)
-		{
-            id_ = book.ISBN;
-            name_ = name;
-		}
+		
 	}
 }
