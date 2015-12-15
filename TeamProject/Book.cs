@@ -16,11 +16,7 @@ namespace TeamProject
 		public int price;
 		public string location;
 		public int status; //1=avalible
-        public string borrow_person;
+		public string borrow_person;
 		public DateTime date;
-        internal void BorrowBook(String name)
-        {
-            borrow_person = name;
-        }
 	}
 }
