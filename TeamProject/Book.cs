@@ -17,6 +17,7 @@ namespace TeamProject
 		public string location;
 		public int status; //1=avalible
         public string borrow_person;
+		public DateTime date;
         internal void BorrowBook(String name)
         {
             borrow_person = name;
