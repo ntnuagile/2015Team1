@@ -9,35 +9,39 @@ namespace TeamProject
 	//test
 	public class Book
 	{
-		private string ISBN;//1
-		private string title;//2
-		private string author;//3
-		private string seller;//4
-		private string location;//5
-		private int price;
-		private bool avalible = true;
+		private string ISBN_;//1
+		private string title_;//2
+		private string author_;//3
+		private string seller_;//4
+		private string location_;//5
+		private int price_;
+		private bool avalible_ = true;
 		private string borrow_person;
-		private DateTime date;
+		private DateTime date_;
 
 		public void SetBookData(string [] d, int p)
 		{
-			ISBN = d[0];
-			title = d[1];
-			author = d[2];
-			seller = d[3];
-			location= d[4];
-			price  = p;
+			ISBN_ = d[0];
+			title_ = d[1];
+			author_ = d[2];
+			seller_ = d[3];
+			location_= d[4];
+			price_  = p;
 		}
 
-		public void ChangeStatusToBorrow() { avalible = false; }
-		public void SetDate(DateTime d) { date = d; }
-		public string GetISBN() { return ISBN; }
-		public string GetTitle() { return title; }
-		public string GetAuthor() { return author; }
-		public string GetSeller() { return seller; }
-		public string GetLocation() { return location; }
-		public int GetPrice() { return price; }
+		public void ChangeStatusToBorrow() { avalible_ = false; }
+		public void SetDate(DateTime d) { date_ = d; }
+		public string GetISBN() { return ISBN_; }
+		public string GetTitle() { return title_; }
+		public string GetAuthor() { return author_; }
+		public string GetSeller() { return seller_; }
+		public string GetLocation() { return location_; }
+		public int GetPrice() { return price_; }
 		public string GetBorrowPerson() { return borrow_person; }
+
+		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
+		public void SetTitle(string Title) { title_ = Title; }
+		public void SetAuthor(string author) { author_ = author; }
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
 	}

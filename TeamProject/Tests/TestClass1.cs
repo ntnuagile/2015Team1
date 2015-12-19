@@ -48,6 +48,17 @@ namespace TeamProject.Tests
 			Assert.That(lib.books[1].GetTitle(), Is.EqualTo("Computer Science"));
 		}
         
+		[Test]
+		public void EditBook()
+		{
+
+		}
+
+
+
+
+
+		/////////////////////////////////////////////////
 		
         [Test]
 		public void Borrow3()
