@@ -14,15 +14,15 @@ namespace TeamProject
 		internal void AddBook(Book add)
 		{
 			books[numofbooks] = add;
-			books[numofbooks].status = 1;
-			books[numofbooks].date = DateTime.Now;
+			//books[numofbooks].ChangeStatusToBorrow();
+			books[numofbooks].SetDate(DateTime.Now);
 			numofbooks += 1;
 		}
 		private int FindBookIndex(String ISBN)
 		{
 			for(int i=0; i<numofbooks; i+=1)
 			{
-				if (books[i].ISBN== ISBN) return i;
+				if (books[i].GetISBN() == ISBN) return i;
 			}
 			return -1;
 		}
@@ -32,8 +32,8 @@ namespace TeamProject
 			int index = FindBookIndex(ISBN);
 			if(index>=0)
 			{
-				books[index].borrow_person = name;
-				books[index].status = 0;
+				books[index].ChangeBorrowPerson(name);
+				books[index].ChangeStatusToBorrow();
 			}
 		}
 	}
