@@ -14,7 +14,7 @@ namespace TeamProject
 		internal void AddBook(Book add)
 		{
 			books[numofbooks] = add;
-			//books[numofbooks].ChangeStatusToBorrow();
+			//books[numofbooks].ChangeStatusToBorrow()
 			books[numofbooks].SetDate(DateTime.Now);
 			numofbooks += 1;
 		}

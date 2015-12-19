@@ -31,7 +31,7 @@ namespace TeamProject.Tests
 		}
 
 		[Test]
-		public void Add2Books()
+		public void AddBooks()
 		{
 			Library lib = new Library();
 			Book book1 = new Book();
