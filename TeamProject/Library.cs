@@ -38,6 +38,7 @@ namespace TeamProject
 			{
 				books[index].ChangeBorrowPerson(name);
 				books[index].ChangeStatusToBorrow();
+				books[index].SetAvalible();
 			}
 		}
 

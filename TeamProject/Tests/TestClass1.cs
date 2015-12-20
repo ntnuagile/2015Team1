@@ -116,7 +116,7 @@ namespace TeamProject.Tests
 			Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
 			Assert.That(mb.members[0].GetTp(), Is.EqualTo("reader"));
 			Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
-			Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
+			//Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
 		}
 	}

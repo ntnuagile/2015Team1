@@ -47,6 +47,7 @@ namespace TeamProject
 		public void SetSeller(string seller) { seller_ = seller; }
 		public void SetLocation(string location) { location_ = location; }
 		public void SetPrice(int price) { price_ = price; }
+		public void SetAvalible() { avalible_ = !avalible_; }
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
 	}
