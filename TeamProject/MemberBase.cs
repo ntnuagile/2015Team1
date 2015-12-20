@@ -16,7 +16,9 @@ namespace TeamProject
 
 		public void AddMember(Member m)
 		{
-			
+			members[numOfmembers_] = m;
+			members[numOfmembers_].SetDate(DateTime.Now);
+			numOfmembers_ += 1;
 		}
 	}
 }

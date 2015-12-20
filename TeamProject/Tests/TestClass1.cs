@@ -108,8 +108,11 @@ namespace TeamProject.Tests
 			MemberBase mb = new MemberBase();
 
 			Member m = new Member();
+			m.SetName("test");
 
 			mb.AddMember(m);
+			Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
+
 		}
 	}
 }

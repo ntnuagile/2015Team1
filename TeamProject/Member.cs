@@ -16,5 +16,12 @@ namespace TeamProject
 		private DateTime regtime_;
 
 
+		public void SetName(string name) { name_ = name; }
+
+		public void SetDate(DateTime d) { regtime_ = d; }
+
+
+
+		public string GetName() { return name_; }
 	}
 }
