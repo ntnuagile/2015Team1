@@ -109,6 +109,7 @@ namespace TeamProject.Tests
 
 			Member m = new Member();
 			m.SetName("test");
+			m.SetPassword("123");
 
 			mb.AddMember(m);
 			Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
