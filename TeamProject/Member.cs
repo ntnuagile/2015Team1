@@ -8,7 +8,7 @@ namespace TeamProject
 {
 	public class Member
 	{
-		private int id_;
+		//private int id_;
 		private string name_;
 		private string password_;
 		private string type_="reader";
