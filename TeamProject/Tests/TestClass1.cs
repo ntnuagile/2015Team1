@@ -62,6 +62,7 @@ namespace TeamProject.Tests
 			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
 			Assert.That(Lib.books[0].GetAuthor(), Is.EqualTo("Jobs"));
 			Assert.That(Lib.books[0].GetSeller(), Is.EqualTo("Apple"));
+			Assert.That(Lib.books[0].GetPrice(), Is.EqualTo(400));
 		}
 
 		[Test, Ignore("Ignore DeleteBook test")]
@@ -75,11 +76,14 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book4 = new Book();
+			Book book2 = new Book();
 			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
-
+			book2.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			lib.AddBook(book2);
 			lib.AddBook(book4);
+			
 
-			Assert.That(lib.SearchBookTitle("What do you mean")[0], Is.EqualTo(lib.books[0]));
+			Assert.That(lib.SearchBookTitle("What do you mean")[0], Is.EqualTo(lib.books[1]));
 		}
 
 		[Test]
