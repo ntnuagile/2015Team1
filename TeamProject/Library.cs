@@ -36,6 +36,21 @@ namespace TeamProject
 				books[index].ChangeStatusToBorrow();
 			}
 		}
+
+		internal void DeleteBook(String ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if(index >= 0)
+			{
+				books[index].SetISBN("");
+				books[index].SetTitle("");
+				books[index].SetAuthor("");
+				books[index].SetSeller("");
+				books[index].SetLocation("");
+				books[index].SetPrice(0);
+			}
+			numofbooks -= 1;
+		}
 	}
 	
 	

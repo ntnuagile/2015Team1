@@ -42,6 +42,9 @@ namespace TeamProject
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
 		public void SetTitle(string Title) { title_ = Title; }
 		public void SetAuthor(string author) { author_ = author; }
+		public void SetSeller(string seller) { seller_ = seller; }
+		public void SetLocation(string location) { location_ = location; }
+		public void SetPrice(int price) { price_ = price; }
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
 	}
