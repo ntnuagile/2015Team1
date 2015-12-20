@@ -51,6 +51,35 @@ namespace TeamProject
 			}
 			numofbooks -= 1;
 		}
+		public Book[] FindBooks = new Book[10000];
+		private Book[] SearchBookTitle(String title)
+		{
+			int num = 0;
+			for(int i=0;i<numofbooks;i+=1)
+			{
+				if(books[i].GetTitle()==title)
+				{
+					FindBooks[num] = books[i];
+					num += 1;
+				}
+			}
+			return FindBooks;
+		}
+		private Book[] SearchBookISBN(String ISBN)
+		{
+			int num = 0;
+			for(int i=0;i<numofbooks;i+=1)
+			{
+				if(books[i].GetISBN()==ISBN)
+				{
+					FindBooks[num] = books[i];
+					num += 1;
+				}
+			}
+			return FindBooks;
+		}
+			
+
 	}
 	
 	
