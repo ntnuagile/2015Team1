@@ -68,7 +68,9 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="Library.cs" />
+    <Compile Include="Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MemberBase.cs" />
     <Compile Include="Tests\TestClass1.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

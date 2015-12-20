@@ -101,5 +101,15 @@ namespace TeamProject.Tests
 			Assert.That(lib.books[0].GetBorrowPerson(), Is.EqualTo("Jeremy"));
 			Assert.That(lib.books[0].GetISBN(), Is.EqualTo("1515151515"));
 		}
+
+		[Test]
+		public void AddMemeber()
+		{
+			MemberBase mb = new MemberBase();
+
+			Member m = new Member();
+
+			mb.AddMember(m);
+		}
 	}
 }
