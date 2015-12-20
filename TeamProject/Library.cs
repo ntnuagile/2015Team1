@@ -77,5 +77,15 @@ namespace TeamProject
 				}
 			return findResult;
 		}
+
+		public void EditBook(Book edit, int index)
+		{
+			books[index].SetISBN(edit.GetISBN());
+			books[index].SetTitle(edit.GetTitle());
+			books[index].SetAuthor(edit.GetAuthor());
+			books[index].SetSeller(edit.GetSeller());
+			books[index].SetLocation(edit.GetLocation());
+			books[index].SetPrice(edit.GetPrice());
+		}
 	}
 }
