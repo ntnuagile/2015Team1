@@ -8,8 +8,9 @@ namespace TeamProject
 {
 	class Library
 	{
+		public const int maxBookNum = 10000;
 		public int numofbooks = 0;
-		public Book[] books = new Book[10000];
+		public Book[] books = new Book[maxBookNum];
 		
 		internal void AddBook(Book add)
 		{
@@ -51,7 +52,7 @@ namespace TeamProject
 			}
 			numofbooks -= 1;
 		}
-		public Book[] FindBooks = new Book[10000];
+		public Book[] FindBooks = new Book[maxBookNum];
 		public Book[] SearchBookTitle(String title)
 		{
 			int num = 0;
@@ -78,10 +79,5 @@ namespace TeamProject
 			}
 			return FindBooks;
 		}
-			
-
 	}
-	
-	
-
 }
