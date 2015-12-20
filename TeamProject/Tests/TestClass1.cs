@@ -52,7 +52,7 @@ namespace TeamProject.Tests
 
 			Book editBook = new Book();
 			editBook.SetBookData(new string[] { "1", "This is a edited Book", "Jobs", "Apple", "Gong Guang Library" }, 400);
-			Lib.EditBook(editBook, 0);
+			Lib.EditBook(editBook, Lib.FindBookIndex("1"));
 
 
 

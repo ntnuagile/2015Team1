@@ -23,7 +23,7 @@ namespace TeamProject
 			numofbooks += 1;
 		}
 
-		private int FindBookIndex(String ISBN)
+		public int FindBookIndex(String ISBN)
 		{
 			for(int i = 0 ; i < numofbooks; i += 1)
 				if (books[i].GetISBN() == ISBN)
