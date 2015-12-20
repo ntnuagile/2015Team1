@@ -52,7 +52,7 @@ namespace TeamProject
 			numofbooks -= 1;
 		}
 		public Book[] FindBooks = new Book[10000];
-		private Book[] SearchBookTitle(String title)
+		public Book[] SearchBookTitle(String title)
 		{
 			int num = 0;
 			for(int i=0;i<numofbooks;i+=1)
@@ -65,12 +65,12 @@ namespace TeamProject
 			}
 			return FindBooks;
 		}
-		private Book[] SearchBookISBN(String ISBN)
+		public Book[] SearchBookAuthor(String Author)
 		{
 			int num = 0;
 			for(int i=0;i<numofbooks;i+=1)
 			{
-				if(books[i].GetISBN()==ISBN)
+				if(books[i].GetAuthor()==Author)
 				{
 					FindBooks[num] = books[i];
 					num += 1;

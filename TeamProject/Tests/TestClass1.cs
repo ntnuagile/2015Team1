@@ -48,7 +48,7 @@ namespace TeamProject.Tests
 			Assert.That(lib.books[1].GetTitle(), Is.EqualTo("Computer Science"));
 		}
         
-		[Test]
+		/*[Test]
 		public void EditBook()
 		{
 
@@ -58,12 +58,18 @@ namespace TeamProject.Tests
 		public void DeleteBook()
 		{ 
 			
-		}
+		}*/
 
 		[Test]
 		public void SearchBook()
 		{
+			Library lib = new Library();
+			Book book4 = new Book();
+			String[] data4 = { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" };
+			book4.SetBookData(data4, 236);
+			lib.AddBook(book4);
 
+			Assert.That(lib.SearchBookTitle("What do you mean"), Is.EqualTo(lib.books[0]));
 		}
 
 
