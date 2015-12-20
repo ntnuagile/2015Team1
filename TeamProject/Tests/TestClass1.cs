@@ -69,7 +69,7 @@ namespace TeamProject.Tests
 			book4.SetBookData(data4, 236);
 			lib.AddBook(book4);
 
-			Assert.That(lib.SearchBookTitle("What do you mean"), Is.EqualTo(lib.books[0]));
+			Assert.That(lib.SearchBookTitle("What do you mean")[0], Is.EqualTo(lib.books[0]));
 		}
 
 
