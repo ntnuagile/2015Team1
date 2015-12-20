@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace TeamProject.Tests
 {
-    [TestFixture]
-    public class TestClass1
-    {
+	[TestFixture]
+	public class TestClass1
+	{
 		[Test]
 		public void AddBook()
 		{
 			Library Lib = new Library();
 			Book book1 = new Book();
-			book1.SetBookData(new string[] {"1", "This is a Book", "Author", "Google", "Gong Guang Library"}, 200);
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
 
 			Lib.AddBook(book1);
 
@@ -41,17 +41,33 @@ namespace TeamProject.Tests
 			Assert.That(lib.books[1].GetLocation(), Is.EqualTo("Gong Guang Library"));
 			Assert.That(lib.books[1].GetTitle(), Is.EqualTo("Computer Science"));
 		}
-        
-		[Test, Ignore("Ignore EditBook test")]
+
+		[Test]
 		public void EditBook()
 		{
-			
+			Library Lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			Lib.AddBook(book1);
+
+			Book editBook = new Book();
+			editBook.SetBookData(new string[] { "1", "This is a edited Book", "Jobs", "Apple", "Gong Guang Library" }, 400);
+			Lib.EditBook(editBook, 0);
+
+
+
+			Assert.That(Lib.books[0].GetISBN(), Is.EqualTo("1"));
+			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
+			Assert.That(Lib.books[0].GetTitle(), Is.EqualTo("This is a edited Book"));
+			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
+			Assert.That(Lib.books[0].GetAuthor(), Is.EqualTo("Jobs"));
+			Assert.That(Lib.books[0].GetSeller(), Is.EqualTo("Apple"));
 		}
 
 		[Test, Ignore("Ignore DeleteBook test")]
 		public void DeleteBook()
-		{ 
-			
+		{
+
 		}
 
 		[Test]
@@ -66,7 +82,7 @@ namespace TeamProject.Tests
 			Assert.That(lib.SearchBookTitle("What do you mean")[0], Is.EqualTo(lib.books[0]));
 		}
 
-        [Test]
+		[Test]
 		public void Borrow3()
 		{
 			Library lib = new Library();
@@ -80,5 +96,5 @@ namespace TeamProject.Tests
 			Assert.That(lib.books[0].GetBorrowPerson(), Is.EqualTo("Jeremy"));
 			Assert.That(lib.books[0].GetISBN(), Is.EqualTo("1515151515"));
 		}
-    }
+	}
 }
