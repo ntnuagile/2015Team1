@@ -11,14 +11,14 @@ namespace TeamProject
 		//private int id_;
 		private string name_;
 		private string password_;
-		private string type_="reader";
-		private string inviter_="self";
+		private bool isAdministrator_;
+		private string inviter_;
 		private DateTime regtime_;
 
 
 		public void SetName(string name) { name_ = name; }
 		public void SetPassword(string pw) { password_ = pw; }
-		public void SetType(string type) { type_ = type; }
+        public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }
 		public void SetInviter(string inviter) { inviter_ = inviter; }
 		public void SetDate(DateTime d) { regtime_ = d; }
 
@@ -26,9 +26,10 @@ namespace TeamProject
 
 		public string GetName() { return name_; }
 		public string GetPassword() { return password_; }
-		public string GetTp() { return type_; } //GetType has been used in default.
+        public bool GetIsAdministrator() { return isAdministrator_; } //GetType has been used in default.
 		public string GetInviter() { return inviter_; }
 		public DateTime GetRegtime() { return regtime_; }
 
 	}
+
 }

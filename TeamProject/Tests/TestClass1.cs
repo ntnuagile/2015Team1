@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,21 +103,41 @@ namespace TeamProject.Tests
 		}
 
 		[Test]
-		public void AddMemeber()
+		public void AddUser()
 		{
 			MemberBase mb = new MemberBase();
 
 			Member m = new Member();
 			m.SetName("test");
 			m.SetPassword("123");
+            m.SetIsAdministrator(false);
 
 			mb.AddMember(m);
 			Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
 			Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
-			Assert.That(mb.members[0].GetTp(), Is.EqualTo("reader"));
+			Assert.That(mb.members[0].GetIsAdministrator(), Is.EqualTo(false));
 			Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
 			//Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
 		}
+
+        [Test]
+        public void AddAdministrator()
+        {
+            MemberBase mb = new MemberBase();
+
+            Member m = new Member();
+            m.SetName("test");
+            m.SetPassword("123");
+            m.SetIsAdministrator(true);
+
+            mb.AddMember(m);
+            Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
+            Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
+            Assert.That(mb.members[0].GetIsAdministrator(), Is.EqualTo(true));
+            Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
+            //Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
+
+        }
 	}
 }
