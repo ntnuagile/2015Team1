@@ -12,4 +12,4 @@
 - Trello ： <https://trello.com/b/p7LxuXdG/ntnu2015-team1-lib-system>
 - Google spreadsheet：https://docs.google.com/spreadsheets/d/1pZfvRTliU1nalqZyr1SEZxVuzARgoOF5eMXDv6NiLZs/edit#gid=0
 - Jenkins: http://140.122.185.182:8080/
-- UML: https://www.lucidchart.com/documents/edit/bfab08e2-3b07-4302-a0a7-0ae0f4c25843?shared=true&
+- UML: https://www.lucidchart.com/invitations/accept/4d1c285d-739b-46d4-af3c-6ba32d46504e
