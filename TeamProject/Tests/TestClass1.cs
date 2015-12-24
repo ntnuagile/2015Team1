@@ -1,4 +1,4 @@
-﻿ using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +66,8 @@ namespace TeamProject.Tests
 			Assert.That(Lib.books[0].GetPrice(), Is.EqualTo(400));
 		}
 
-		[Test, Ignore("Ignore DeleteBook test")]
+		//[Test, Ignore("Ignore DeleteBook test")]
+		[Test]
 		public void DeleteBook()
 		{
 

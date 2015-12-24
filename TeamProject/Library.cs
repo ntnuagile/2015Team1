@@ -42,7 +42,7 @@ namespace TeamProject
 			}
 		}
 
-		internal void DeleteBook(String ISBN)
+		public void DeleteBook(String ISBN)
 		{
 			int index = FindBookIndex(ISBN);
 			if(index >= 0)
@@ -91,6 +91,15 @@ namespace TeamProject
 			books[index].SetLocation(edit.GetLocation());
 			books[index].SetPrice(edit.GetPrice());
 			return true;
+		}
+
+		public void ReserveBook(string ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if (books[index].GetAvalible)
+			{
+				books[index].SetReservation();
+			}
 		}
 	}
 }
