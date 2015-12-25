@@ -117,7 +117,7 @@ namespace TeamProject.Tests
 			Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
 			Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
 			Assert.That(mb.members[0].GetIsAdministrator(), Is.EqualTo(false));
-			Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
+			//Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
 			//Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
 		}
@@ -136,9 +136,23 @@ namespace TeamProject.Tests
             Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
             Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
             Assert.That(mb.members[0].GetIsAdministrator(), Is.EqualTo(true));
-            Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
+            //Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
             //Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
         }
+
+		[Test]
+		public void IsAvailible()
+		{
+			Library lib = new Library();
+			Book book4 = new Book();
+			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
+			lib.AddBook(book4);
+
+			string name = "Andy";
+			lib.BorrowBook("222", name);
+			lib.ReserveBook("222");
+			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(true));
+		}
 	}
 }

@@ -38,7 +38,6 @@ namespace TeamProject
 			{
 				books[index].ChangeBorrowPerson(name);
 				books[index].ChangeStatusToBorrow();
-				books[index].SetAvalible();
 			}
 		}
 
@@ -96,7 +95,7 @@ namespace TeamProject
 		public void ReserveBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if (books[index].GetAvalible)
+			if (books[index].GetAvailible()==false)
 			{
 				books[index].SetReservation();
 			}

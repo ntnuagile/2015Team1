@@ -17,7 +17,7 @@ namespace TeamProject
 		private int price_ = 0;
 
 		// About Borrow
-		private bool avalible_ = true;
+		private bool availible_ = true;
 		private string borrow_person;
 		private DateTime date_;
 		private bool reserved_ = false;
@@ -32,7 +32,7 @@ namespace TeamProject
 			price_ = p;
 		}
 
-		public void ChangeStatusToBorrow() { avalible_ = false; }
+		public void ChangeStatusToBorrow() { availible_ = false; }
 		public void SetDate(DateTime d) { date_ = d; }
 		public string GetISBN() { return ISBN_; }
 		public string GetTitle() { return title_; }
@@ -41,7 +41,8 @@ namespace TeamProject
 		public string GetLocation() { return location_; }
 		public int GetPrice() { return price_; }
 		public string GetBorrowPerson() { return borrow_person; }
-		public bool GetAvalible() { return avalible_; }
+		public bool GetAvailible() { return availible_; }
+		public bool GetReservation() { return reserved_; }
 
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
 		public void SetTitle(string Title) { title_ = Title; }
@@ -49,7 +50,7 @@ namespace TeamProject
 		public void SetSeller(string seller) { seller_ = seller; }
 		public void SetLocation(string location) { location_ = location; }
 		public void SetPrice(int price) { price_ = price; }
-		public void SetAvalible(bool avalible) { avalible_ = !avalible; }
+		public void SetAvailible(bool availible) { availible_ = !availible; }
 		public void SetReservation() { reserved_ = !reserved_;}
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
