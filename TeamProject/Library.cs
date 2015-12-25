@@ -102,5 +102,22 @@ namespace TeamProject
 			}
 			return false;
 		}
+
+		public bool SearchReservation(string ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if(books[index].GetReservation() == true)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public void DeleteReservation(string ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if (books[index].GetReservation() == true)
+				books[index].SetReservation(false);
+		}
 	}
 }
