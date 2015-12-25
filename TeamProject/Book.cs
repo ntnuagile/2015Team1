@@ -51,7 +51,7 @@ namespace TeamProject
 		public void SetLocation(string location) { location_ = location; }
 		public void SetPrice(int price) { price_ = price; }
 		public void SetAvailible(bool availible) { availible_ = !availible; }
-		public void SetReservation() { reserved_ = !reserved_;}
+		public void SetReservation(bool reserved) { reserved_ = !reserved;}
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
 		

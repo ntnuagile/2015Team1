@@ -66,12 +66,24 @@ namespace TeamProject.Tests
 			Assert.That(Lib.books[0].GetPrice(), Is.EqualTo(400));
 		}
 
-		//[Test, Ignore("Ignore DeleteBook test")]
 		[Test]
 		public void DeleteBook()
 		{
+			Library lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			
+			lib.AddBook(book1);
+			lib.DeleteBook("1");
 
+			Assert.That(lib.books[0].GetISBN(), Is.EqualTo(""));
+			Assert.That(lib.books[0].GetTitle(), Is.EqualTo(""));
+			Assert.That(lib.books[0].GetAuthor(), Is.EqualTo(""));
+			Assert.That(lib.books[0].GetSeller(), Is.EqualTo(""));
+			Assert.That(lib.books[0].GetLocation(), Is.EqualTo(""));
+			Assert.That(lib.books[0].GetPrice(), Is.EqualTo(0));
 		}
+
 
 		[Test]
 		public void SearchBook()
@@ -152,7 +164,19 @@ namespace TeamProject.Tests
 			string name = "Andy";
 			lib.BorrowBook("222", name);
 			lib.ReserveBook("222");
-			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(true));
+			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));//The book is not reserved.
+		}
+
+		[Test]
+		public void ReserveBook()
+		{
+			Library lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+
+			lib.AddBook(book1);
+			lib.ReserveBook("1");
+
 		}
 	}
 }

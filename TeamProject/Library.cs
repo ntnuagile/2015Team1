@@ -41,7 +41,7 @@ namespace TeamProject
 			}
 		}
 
-		public void DeleteBook(String ISBN)
+		public void DeleteBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
 			if(index >= 0)
@@ -92,13 +92,15 @@ namespace TeamProject
 			return true;
 		}
 
-		public void ReserveBook(string ISBN)
+		public bool ReserveBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if (books[index].GetAvailible()==false)
+			if (books[index].GetAvailible() == true)
 			{
-				books[index].SetReservation();
+				books[index].SetReservation(false);
+				return true;
 			}
+			return false;
 		}
 	}
 }
