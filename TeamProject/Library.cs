@@ -34,10 +34,11 @@ namespace TeamProject
 		internal void BorrowBook(String ISBN, String name)
 		{
 			int index = FindBookIndex(ISBN);
-			if(index >= 0)
+			if(index >= 0 && books[index].GetAvailible()==true)
 			{
 				books[index].ChangeBorrowPerson(name);
 				books[index].ChangeStatusToBorrow();
+				books[index].SetAvailible(false);
 			}
 		}
 
@@ -92,15 +93,13 @@ namespace TeamProject
 			return true;
 		}
 
-		public bool ReserveBook(string ISBN)
+		public void ReserveBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if (books[index].GetAvailible() == true)
+			if (books[index].GetAvailible() == false)
 			{
-				books[index].SetReservation(false);
-				return true;
+				books[index].SetReservation(true);	
 			}
-			return false;
 		}
 
 		public bool SearchReservation(string ISBN)

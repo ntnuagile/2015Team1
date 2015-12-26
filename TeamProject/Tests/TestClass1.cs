@@ -153,19 +153,7 @@ namespace TeamProject.Tests
 
         }
 
-		[Test]
-		public void IsAvailible()
-		{
-			Library lib = new Library();
-			Book book4 = new Book();
-			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
-			lib.AddBook(book4);
-
-			string name = "Andy";
-			lib.BorrowBook("222", name);
-			lib.ReserveBook("222");
-			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));//The book is not reserved.
-		}
+		
 
 		[Test]
 		public void ReserveBook()
@@ -176,6 +164,41 @@ namespace TeamProject.Tests
 
 			lib.AddBook(book1);
 			lib.ReserveBook("1");
+
+			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
+			//This book is not borrowed,so it cannot be reserved.
+		}
+
+		[Test]
+		public void SearchReservation()
+		{
+			Library lib = new Library();
+			Book book4 = new Book();
+			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
+			lib.AddBook(book4);
+
+			string name = "Andy";
+			lib.BorrowBook("222", name);
+			lib.ReserveBook("222");
+			Assert.That(lib.SearchReservation("222"), Is.EqualTo(true));
+		}
+
+		[Test]
+		public void DeleteReservation()
+		{
+			Library lib = new Library();
+
+			Book book3 = new Book();
+			book3.SetBookData(new String[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
+			lib.AddBook(book3);
+
+			string name = "Mary";
+			lib.BorrowBook("1515151515", name);
+			lib.ReserveBook("1515151515");
+			lib.DeleteReservation("1515151515");
+
+			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
+
 		}
 
 
