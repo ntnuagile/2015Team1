@@ -21,14 +21,12 @@ namespace TeamProject
 			numOfmembers_ += 1;
 		}
 
-        public string SearchMember(String name)
-        {
-            for (int i = 0; i < numOfmembers_ ; i ++)
-            {
-                if (members[i].GetName() == name)
-                    return "OK";
-            }
-            return "Member not found";
-        }
+		public string SearchMember(String name)
+		{
+			for (int i = 0; i < numOfmembers_ ; ++i)
+				if (members[i].GetName() == name)
+					return "OK";
+			return "Member not found";
+		}
 	}
 }

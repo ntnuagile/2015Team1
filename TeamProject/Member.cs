@@ -17,16 +17,14 @@ namespace TeamProject
 
 		public void SetName(string name) { name_ = name; }
 		public void SetPassword(string pw) { password_ = pw; }
-        public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }
+		public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }
 		public void SetInviter(string inviter) { inviter_ = inviter; }
 		public void SetDate(DateTime d) { regtime_ = d; }
 
 		public string GetName() { return name_; }
 		public string GetPassword() { return password_; }
-        public bool GetIsAdministrator() { return isAdministrator_; } //GetType has been used in default.
+		public bool GetIsAdministrator() { return isAdministrator_; } //GetType has been used in default.
 		public string GetInviter() { return inviter_; }
 		public DateTime GetRegtime() { return regtime_; }
-
 	}
-
 }

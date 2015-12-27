@@ -37,9 +37,9 @@ namespace TeamProject
 		}
 
 		public string BorrowBook(String ISBN, String name)
-        {
-            int index = FindBookIndex(ISBN);
-			if (index >= 0 && books [index].GetAvailible () == true) {
+		{
+			int index = FindBookIndex(ISBN);
+			if (index >= 0 && books [index].isAvailible () == true) {
 				books [index].ChangeBorrowPerson (name);
 				books[index].SetDate(DateTime.Now);
 				books [index].ChangeStatusToBorrow ();
@@ -48,20 +48,20 @@ namespace TeamProject
 			}
 			else
 				return (index < 0) ? "Book not found" : "This book already be borrowed";
-        }
+		}
 
-        public string ReturnBook(String ISBN)
-        {
-            int index = FindBookIndex(ISBN);
-            if (index >= 0 && books[index].GetAvailible() == false)
-            {
-                books[index].ChangeBorrowPerson(null);
-                books[index].SetAvailible(true);
-                return "Return Success";
-            }
-            else
+		public string ReturnBook(String ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if (index >= 0 && books[index].isAvailible() == false)
+			{
+				books[index].ChangeBorrowPerson(null);
+				books[index].SetAvailible(true);
+				return "Return Success";
+			}
+			else
 				return (index < 0) ? "Book not found" : "This book already be returned";
-        }
+		}
 		public void DeleteBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
@@ -132,7 +132,7 @@ namespace TeamProject
 		public void ReserveBook(string ISBN, string name)
 		{
 			int index = FindBookIndex(ISBN);
-			if (books[index].GetAvailible() == false)
+			if (books[index].isAvailible() == false)
 			{
 				books[index].SetReservation(name);
 			}
@@ -141,7 +141,7 @@ namespace TeamProject
 		public bool SearchReservation(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if(books[index].GetReservation() == true)
+			if(books[index].isReserved() == true)
 			{
 				return true;
 			}
@@ -151,10 +151,8 @@ namespace TeamProject
 		public void CancelReservation(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if (books[index].GetReservation() == true)
-			{
-				books[index].DeleteReservation();
-			}
+			if (books[index].isReserved() == true)
+				books[index].SetReservation(false);
 		}
 	}
 }

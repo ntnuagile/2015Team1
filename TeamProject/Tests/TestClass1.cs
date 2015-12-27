@@ -165,8 +165,8 @@ namespace TeamProject.Tests
 			lib.AddBook(book1);
 			lib.ReserveBook("1", "Candy");
 
-			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
-			//This book is not borrowed,so it cannot be reserved.
+			Assert.That(lib.books[0].isReserved(), Is.EqualTo(false));
+			// This book is not borrowed,so it cannot be reserved.
 		}
 
 
@@ -198,7 +198,7 @@ namespace TeamProject.Tests
 			lib.ReserveBook("1515151515", "Candy");
 			lib.CancelReservation("1515151515");
 
-			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
+			Assert.That(lib.books[0].isReserved(), Is.EqualTo(false));
 		}
 
         [Test]
