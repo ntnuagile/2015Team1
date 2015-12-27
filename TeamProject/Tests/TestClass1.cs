@@ -133,6 +133,22 @@ namespace TeamProject.Tests
 			//Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
 		}
+        [Test]
+        public void SetUser()
+        {
+            MemberBase mb = new MemberBase();
+
+            Member m = new Member();
+            m.SetName("test");
+            m.SetPassword("123");
+            m.SetIsAdministrator(false);
+
+            mb.AddMember(m);
+
+            mb.SetMember(m, "yEEEE", "689689", DateTime.Now);
+            Assert.That(mb.members[0].GetName(), Is.EqualTo("yEEEE"));
+            Assert.That(mb.members[0].GetPassword(), Is.EqualTo("689689"));
+        }
 
         [Test]
         public void AddAdministrator()

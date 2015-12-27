@@ -15,6 +15,7 @@ namespace TeamProject
 		private string inviter_;
 		private DateTime regtime_;
 
+        //public void SetID(string id) { id_ = id; }
 		public void SetName(string name) { name_ = name; }
 		public void SetPassword(string pw) { password_ = pw; }
 		public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }

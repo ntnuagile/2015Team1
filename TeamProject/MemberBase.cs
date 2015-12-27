@@ -23,6 +23,16 @@ namespace TeamProject
 			    numOfmembers_ += 1;
             }
 		}
+        public void SetMember(Member m,string name,string password,DateTime d)
+        {
+            if (SearchMember(m.GetName()) == true)
+            {
+                m.SetName(name);
+                m.SetPassword(password);
+                m.SetDate(d);
+                members[numOfmembers_] = m;
+            }
+        }
 
 		public bool SearchMember(String name)
 		{
