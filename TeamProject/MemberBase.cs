@@ -20,5 +20,15 @@ namespace TeamProject
 			members[numOfmembers_].SetDate(DateTime.Now);
 			numOfmembers_ += 1;
 		}
+
+        public string SearchMember(String name)
+        {
+            for (int i = 0; i < numOfmembers_ ; i ++)
+            {
+                if (members[i].GetName() == name)
+                    return "OK";
+            }
+            return "Member not found";
+        }
 	}
 }

@@ -201,6 +201,43 @@ namespace TeamProject.Tests
 
 		}
 
+        [Test]
+        public void TestBorrow()
+        {
+            Library lib = new Library();
+            Book book = new Book();
+            String book_id = "123";
+            book.SetBookData(new String[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
+            lib.AddBook(book);
 
+            MemberBase mb = new MemberBase();
+            Member m = new Member();
+            String name = "Jerry";
+            m.SetName(name);
+            m.SetPassword("123");
+            m.SetIsAdministrator(false);
+            mb.AddMember(m);
+
+            Assert.That(mb.SearchMember("Mark"), Is.EqualTo("Member not found"));
+            Assert.That(mb.SearchMember(name), Is.EqualTo("OK"));
+
+            Assert.That(lib.Borrow("456", name), Is.EqualTo("Book not found"));
+            Assert.That(lib.Borrow(book_id, name), Is.EqualTo("Borrow Success"));
+            Assert.That(lib.Borrow(book_id, name), Is.EqualTo("This book already be borrowed"));
+        }
+
+        [Test]
+        public void TestReturn()
+        {
+            Library lib = new Library();
+            Book book = new Book();
+            String book_id = "123";
+            book.SetBookData(new String[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
+            lib.AddBook(book);
+            book.SetAvailible(false);
+            Assert.That(lib.Return("456"), Is.EqualTo("Book not found"));
+            Assert.That(lib.Return(book_id), Is.EqualTo("Return Success"));
+            Assert.That(lib.Return(book_id), Is.EqualTo("This book already be returned"));
+        }
 	}
 }
