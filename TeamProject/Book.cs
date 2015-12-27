@@ -21,6 +21,7 @@ namespace TeamProject
 		private string borrow_person;
 		private DateTime date_;
 		private bool reserved_ = false;
+		private string reserved_person;
 
 		public void SetBookData(string[] d, int p)
 		{
@@ -54,6 +55,6 @@ namespace TeamProject
 		public void SetReservation(bool reserved) { reserved_ = reserved;}
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
-		
+
 	}
 }
