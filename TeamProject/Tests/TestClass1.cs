@@ -169,6 +169,7 @@ namespace TeamProject.Tests
 			//This book is not borrowed,so it cannot be reserved.
 		}
 
+
 		[Test]
 		public void SearchReservation()
 		{
@@ -238,5 +239,35 @@ namespace TeamProject.Tests
             Assert.That(lib.ReturnBook(book_id), Is.EqualTo("Return Success"));
             Assert.That(lib.ReturnBook(book_id), Is.EqualTo("This book already be returned"));
         }
+
+
+		[Test]
+		public void CheckBorrowing()
+		{
+			Library lib = new Library();
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book2.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book3.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			Book[] testborrowing = new Book[10];
+			testborrowing[0] = book1;
+			testborrowing[1] = book3;
+
+			String name = "Mandy";
+
+			Assert.That(lib.BorrowBook("1", name), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook("3", name), Is.EqualTo("Borrow Success"));
+
+			Assert.That(lib.CheckBorrowing(name), Is.EqualTo(testborrowing));
+
+		}
 	}
 }

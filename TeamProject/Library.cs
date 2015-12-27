@@ -9,12 +9,17 @@ namespace TeamProject
 	class Library
 	{
 		public const int maxBookNum = 10000;
+		public const int maxBorrowNum = 10;
 		public int numofbooks = 0;
 		public Book[] books = new Book[maxBookNum];
 
 		// About Search
 		private Book[] findResult = new Book[maxBookNum];
 		private int numOfFind = 0;
+
+		//For checking a member's borrowing book(s)
+		public Book[] BorrowingBook = new Book[maxBorrowNum];
+		private int numofborrowing = 0;
 
 		internal void AddBook(Book add)
 		{
@@ -107,6 +112,22 @@ namespace TeamProject
 			books[index].SetPrice(edit.GetPrice());
 			return true;
 		}
+
+
+		public Book[] CheckBorrowing(string name)
+		{
+			numofborrowing = 0;
+			for(int i=0; i<numofbooks; i+=1)
+			{
+				if(books[i].GetBorrowPerson() == name)
+				{
+					BorrowingBook[numofborrowing] = books[i];
+					numofborrowing += 1;
+				}
+			}
+			return BorrowingBook;
+		}
+
 
 		public void ReserveBook(string ISBN, string name)
 		{
