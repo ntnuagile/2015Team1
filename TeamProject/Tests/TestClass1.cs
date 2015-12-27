@@ -196,7 +196,7 @@ namespace TeamProject.Tests
 			string name = "Mary";
 			lib.BorrowBook("1515151515", name);
 			lib.ReserveBook("1515151515", "Candy");
-			lib.DeleteReservation("1515151515");
+			lib.CancelReservation("1515151515");
 
 			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
 		}

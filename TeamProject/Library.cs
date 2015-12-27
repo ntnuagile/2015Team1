@@ -148,7 +148,7 @@ namespace TeamProject
 			return false;
 		}
 
-		public void DeleteReservation(string ISBN)
+		public void CancelReservation(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
 			if (books[index].GetReservation() == true)
