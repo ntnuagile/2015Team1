@@ -141,18 +141,14 @@ namespace TeamProject
 		public bool SearchReservation(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
-			if(books[index].isReserved() == true)
-			{
-				return true;
-			}
-			return false;
+			return books[index].isReserved();
 		}
 
 		public void CancelReservation(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
 			if (books[index].isReserved() == true)
-				books[index].SetReservation(false);
+				books[index].CancelReservation();
 		}
 	}
 }

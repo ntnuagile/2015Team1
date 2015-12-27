@@ -54,7 +54,7 @@ namespace TeamProject
 		public void SetDate(DateTime d) { date_ = d; }
 		public void SetAvailible(bool availible) { availible_ = availible; }
 		public void SetReservation(string name) { reserved_ = true; reserve_person = name; }
-		public void DeleteReservation() { reserved_ = false; reserve_person = ""; }
+		public void CancelReservation() { reserved_ = false; reserve_person = ""; }
 
 		public void ChangeStatusToBorrow() { availible_ = false; }
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
