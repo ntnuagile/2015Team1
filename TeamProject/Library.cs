@@ -31,23 +31,12 @@ namespace TeamProject
 			return -1;
 		}
 
-		internal void BorrowBook(String ISBN, String name)
-		{
-			int index = FindBookIndex(ISBN);
-			if(index >= 0 && books[index].GetAvailible()==true)
-			{
-				books[index].ChangeBorrowPerson(name);
-				books[index].ChangeStatusToBorrow();
-				books[index].SetAvailible(false);
-			}
-		}
-
-
-        public string Borrow(String ISBN, String name)
+		public string BorrowBook(String ISBN, String name)
         {
             int index = FindBookIndex(ISBN);
 			if (index >= 0 && books [index].GetAvailible () == true) {
 				books [index].ChangeBorrowPerson (name);
+				books[index].SetDate(DateTime.Now);
 				books [index].ChangeStatusToBorrow ();
 				books [index].SetAvailible (false);
 				return "Borrow Success";
@@ -56,7 +45,7 @@ namespace TeamProject
 				return (index < 0) ? "Book not found" : "This book already be borrowed";
         }
 
-        public string Return(String ISBN)
+        public string ReturnBook(String ISBN)
         {
             int index = FindBookIndex(ISBN);
             if (index >= 0 && books[index].GetAvailible() == false)

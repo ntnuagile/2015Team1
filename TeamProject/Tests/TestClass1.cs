@@ -202,7 +202,7 @@ namespace TeamProject.Tests
 		}
 
         [Test]
-        public void TestBorrow()
+        public void TestBorrow()	// Success or not
         {
             Library lib = new Library();
             Book book = new Book();
@@ -221,9 +221,9 @@ namespace TeamProject.Tests
             Assert.That(mb.SearchMember("Mark"), Is.EqualTo("Member not found"));
             Assert.That(mb.SearchMember(name), Is.EqualTo("OK"));
 
-            Assert.That(lib.Borrow("456", name), Is.EqualTo("Book not found"));
-            Assert.That(lib.Borrow(book_id, name), Is.EqualTo("Borrow Success"));
-            Assert.That(lib.Borrow(book_id, name), Is.EqualTo("This book already be borrowed"));
+			Assert.That(lib.BorrowBook("456", name), Is.EqualTo("Book not found"));
+			Assert.That(lib.BorrowBook(book_id, name), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook(book_id, name), Is.EqualTo("This book already be borrowed"));
         }
 
         [Test]
@@ -235,9 +235,9 @@ namespace TeamProject.Tests
             book.SetBookData(new String[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
             lib.AddBook(book);
             book.SetAvailible(false);
-            Assert.That(lib.Return("456"), Is.EqualTo("Book not found"));
-            Assert.That(lib.Return(book_id), Is.EqualTo("Return Success"));
-            Assert.That(lib.Return(book_id), Is.EqualTo("This book already be returned"));
+            Assert.That(lib.ReturnBook("456"), Is.EqualTo("Book not found"));
+            Assert.That(lib.ReturnBook(book_id), Is.EqualTo("Return Success"));
+            Assert.That(lib.ReturnBook(book_id), Is.EqualTo("This book already be returned"));
         }
 	}
 }
