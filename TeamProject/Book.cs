@@ -53,10 +53,10 @@ namespace TeamProject
 		public void SetLocation(string location) { location_ = location; }
 		public void SetPrice(int price) { price_ = price; }
 		public void SetAvailible(bool availible) { availible_ = availible; }
-		public void SetReservation(bool reserved) { reserved_ = reserved;}
-
+		public void SetReservation(string name) { reserved_ = true; reserve_person = name; }
+		public void DeleteReservation() { reserved_ = false; reserve_person = ""; }
 
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
-		public void ChangeReservePerson(string name) { reserve_person = name; }
+		//public void ChangeReservePerson(string name) { reserve_person = name; }
 	}
 }

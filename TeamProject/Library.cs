@@ -113,8 +113,7 @@ namespace TeamProject
 			int index = FindBookIndex(ISBN);
 			if (books[index].GetAvailible() == false)
 			{
-				books[index].SetReservation(true);
-				books[index].ChangeReservePerson(name);
+				books[index].SetReservation(name);
 			}
 		}
 
@@ -132,7 +131,9 @@ namespace TeamProject
 		{
 			int index = FindBookIndex(ISBN);
 			if (books[index].GetReservation() == true)
-				books[index].SetReservation(false);
+			{
+				books[index].DeleteReservation();
+			}
 		}
 	}
 }
