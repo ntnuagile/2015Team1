@@ -134,7 +134,7 @@ namespace TeamProject.Tests
 
 		}
         [Test]
-        public void SetUser()
+        public void EditUser()
         {
             MemberBase mb = new MemberBase();
 
@@ -145,7 +145,7 @@ namespace TeamProject.Tests
 
             mb.AddMember(m);
 
-            mb.SetMember(m, "yEEEE", "689689", DateTime.Now);
+            mb.EditMember(m, "yEEEE", "689689", DateTime.Now);
             Assert.That(mb.members[0].GetName(), Is.EqualTo("yEEEE"));
             Assert.That(mb.members[0].GetPassword(), Is.EqualTo("689689"));
         }

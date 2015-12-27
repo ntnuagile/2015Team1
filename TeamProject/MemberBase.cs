@@ -23,7 +23,7 @@ namespace TeamProject
 			    numOfmembers_ += 1;
             }
 		}
-        public void SetMember(Member m,string name,string password,DateTime d)
+        public void EditMember(Member m,string name,string password,DateTime d)
         {
             if (SearchMember(m.GetName()) == true)
             {
