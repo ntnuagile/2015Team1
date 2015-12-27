@@ -15,14 +15,11 @@ namespace TeamProject
 		private string inviter_;
 		private DateTime regtime_;
 
-
 		public void SetName(string name) { name_ = name; }
 		public void SetPassword(string pw) { password_ = pw; }
         public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }
 		public void SetInviter(string inviter) { inviter_ = inviter; }
 		public void SetDate(DateTime d) { regtime_ = d; }
-
-
 
 		public string GetName() { return name_; }
 		public string GetPassword() { return password_; }

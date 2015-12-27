@@ -46,21 +46,14 @@ namespace TeamProject
         public string Borrow(String ISBN, String name)
         {
             int index = FindBookIndex(ISBN);
-            if (index >= 0 && books[index].GetAvailible() == true)
-            {
-                books[index].ChangeBorrowPerson(name);
-                books[index].ChangeStatusToBorrow();
-                books[index].SetAvailible(false);
-                return "Borrow Success";
-            }
-            else if (index < 0)
-            {
-                return "Book not found";
-            }
-            else
-            {
-                return "This book already be borrowed";
-            }
+			if (index >= 0 && books [index].GetAvailible () == true) {
+				books [index].ChangeBorrowPerson (name);
+				books [index].ChangeStatusToBorrow ();
+				books [index].SetAvailible (false);
+				return "Borrow Success";
+			}
+			else
+				return (index < 0) ? "Book not found" : "This book already be borrowed";
         }
 
         public string Return(String ISBN)
@@ -72,14 +65,8 @@ namespace TeamProject
                 books[index].SetAvailible(true);
                 return "Return Success";
             }
-            else if (index < 0)
-            {
-                return "Book not found";
-            }
             else
-            {
-                return "This book already be returned";
-            }
+				return (index < 0) ? "Book not found" : "This book already be returned";
         }
 		public void DeleteBook(string ISBN)
 		{
