@@ -16,17 +16,20 @@ namespace TeamProject
 
 		public void AddMember(Member m)
 		{
-			members[numOfmembers_] = m;
-			members[numOfmembers_].SetDate(DateTime.Now);
-			numOfmembers_ += 1;
+            if(SearchMember(m.GetName()) == false)
+            {
+                members[numOfmembers_] = m;
+			    members[numOfmembers_].SetDate(DateTime.Now);
+			    numOfmembers_ += 1;
+            }
 		}
 
-		public string SearchMember(String name)
+		public bool SearchMember(String name)
 		{
 			for (int i = 0; i < numOfmembers_ ; ++i)
 				if (members[i].GetName() == name)
-					return "OK";
-			return "Member not found";
+					return true;
+			return false;
 		}
 	}
 }

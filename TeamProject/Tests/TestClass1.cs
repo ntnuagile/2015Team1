@@ -218,8 +218,8 @@ namespace TeamProject.Tests
             m.SetIsAdministrator(false);
             mb.AddMember(m);
 
-            Assert.That(mb.SearchMember("Mark"), Is.EqualTo("Member not found"));
-            Assert.That(mb.SearchMember(name), Is.EqualTo("OK"));
+            Assert.That(mb.SearchMember("Mark"), Is.EqualTo(false));
+            Assert.That(mb.SearchMember(name), Is.EqualTo(true));
 
 			Assert.That(lib.BorrowBook("456", name), Is.EqualTo("Book not found"));
 			Assert.That(lib.BorrowBook(book_id, name), Is.EqualTo("Borrow Success"));
@@ -269,5 +269,26 @@ namespace TeamProject.Tests
 			Assert.That(lib.CheckBorrowing(name), Is.EqualTo(testborrowing));
 
 		}
+
+        [Test]
+        public void AddUserAgain()
+        {
+            MemberBase mb = new MemberBase();
+
+            Member m = new Member();
+            m.SetName("test");
+            m.SetPassword("123");
+            m.SetIsAdministrator(false);
+
+            Member n = new Member();
+            m.SetName("test");
+            m.SetPassword("321");
+            m.SetIsAdministrator(false);
+
+            mb.AddMember(m);
+            mb.AddMember(n);
+            Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
+            Assert.That(mb.members[1].GetName(), Is.EqualTo(null));
+        }
 	}
 }
