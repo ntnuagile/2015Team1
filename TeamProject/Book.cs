@@ -9,6 +9,7 @@ namespace TeamProject
 	public class Book
 	{
 		// Basic Info
+		private int id_ = -1;
 		private string ISBN_ = ""; //1
 		private string title_ = ""; //2
 		private string author_ = ""; //3
@@ -34,6 +35,7 @@ namespace TeamProject
 		}
 
 		// get value
+		public int GetID() { return id_; }
 		public int GetPrice() { return price_; }
 		public string GetISBN() { return ISBN_; }
 		public string GetTitle() { return title_; }
@@ -44,7 +46,7 @@ namespace TeamProject
 		public bool isAvailible() { return availible_; }
 		public bool isReserved() { return reserved_; }
 
-
+		public void SetID(int id) { id_ = id; }
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
 		public void SetTitle(string Title) { title_ = Title; }
 		public void SetAuthor(string author) { author_ = author; }

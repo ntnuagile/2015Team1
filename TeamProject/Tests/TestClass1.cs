@@ -43,6 +43,44 @@ namespace TeamProject.Tests
 		}
 
 		[Test]
+		public void BookID()
+		{
+			Library Lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+
+			Lib.AddBook(book1);
+
+			Assert.That(Lib.books[0].GetID(), Is.EqualTo(1));
+		}
+
+		[Test]
+		public void SearchBookbyTitle()
+		{
+			Library Lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+
+			Lib.AddBook(book1);
+
+
+			Assert.That(Lib.SearchTitle("This is a Book")[0], Is.EqualTo(1));
+		}
+
+		[Test]
+		public void FindBookbyID()
+		{
+			Library Lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+
+			Lib.AddBook(book1);
+
+
+			Assert.That(Lib.FindBookIndexbyID(1), Is.EqualTo(0));
+		}
+
+		[Test]
 		public void EditBook()
 		{
 			Library Lib = new Library();
@@ -56,6 +94,28 @@ namespace TeamProject.Tests
 				throw new Exception();
 
 
+
+			Assert.That(Lib.books[0].GetISBN(), Is.EqualTo("1"));
+			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
+			Assert.That(Lib.books[0].GetTitle(), Is.EqualTo("This is a edited Book"));
+			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
+			Assert.That(Lib.books[0].GetAuthor(), Is.EqualTo("Jobs"));
+			Assert.That(Lib.books[0].GetSeller(), Is.EqualTo("Apple"));
+			Assert.That(Lib.books[0].GetPrice(), Is.EqualTo(400));
+		}
+
+		[Test]
+		public void EditBookbyTitle()
+		{
+			Library Lib = new Library();
+			Book book1 = new Book();
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			Lib.AddBook(book1);
+
+			Book editBook = new Book();
+			editBook.SetBookData(new string[] { "1", "This is a edited Book", "Jobs", "Apple", "Gong Guang Library" }, 400);
+			if (Lib.EditBookbyTitle(editBook, "This is a Book", 0) == false)
+				throw new Exception();
 
 			Assert.That(Lib.books[0].GetISBN(), Is.EqualTo("1"));
 			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));

@@ -10,8 +10,11 @@ namespace TeamProject
 	{
 		public const int maxBookNum = 10000;
 		public const int maxBorrowNum = 10;
+		private const int maxFindNum = 100;
+
 		public int numofbooks = 0;
 		public Book[] books = new Book[maxBookNum];
+		private int idCounter_ = 1;
 
 		// About Search
 		private Book[] findResult = new Book[maxBookNum];
@@ -25,6 +28,8 @@ namespace TeamProject
 		{
 			books[numofbooks] = add;
 			books[numofbooks].SetDate(DateTime.Now);
+			books[numofbooks].SetID(idCounter_);
+			idCounter_ += 1;
 			numofbooks += 1;
 		}
 
@@ -99,6 +104,29 @@ namespace TeamProject
 			return findResult;
 		}
 
+		// Edit book
+
+		public int FindBookIndexbyID(int ID)
+		{
+			for (int i = 0; i < numofbooks; i += 1)
+				if (books[i].GetID() == ID)
+					return i;
+			return -1;
+		}
+
+		public int[] SearchTitle(String title)
+		{
+			int[] findID = new int [maxFindNum];
+			int counter = 0;
+			for (int i = 0; i < numofbooks; i += 1)
+				if (books[i].GetTitle() == title)
+				{
+					findID[counter] = books[i].GetID();
+					counter += 1;
+				}
+			return findID;
+		}
+
 		public bool EditBook(Book edit, int index)
 		{
 			if (index == -1)
@@ -113,6 +141,14 @@ namespace TeamProject
 			return true;
 		}
 
+		public bool EditBookbyTitle(Book edit, String Title, int choose)
+		{
+			return EditBook(edit, FindBookIndexbyID(SearchTitle(Title)[choose]));
+			//SearchTitle returns books' id, choose to control which book's id to edit.
+			//FindBookIndexbyID returns the book's index in the array
+		}
+
+		// End of Edit book
 
 		public Book[] CheckBorrowing(string name)
 		{
