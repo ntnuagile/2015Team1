@@ -72,7 +72,7 @@ namespace TeamProject.Tests
 			Library lib = new Library();
 			Book book1 = new Book();
 			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
-			
+
 			lib.AddBook(book1);
 			lib.DeleteBook("1");
 
@@ -95,7 +95,7 @@ namespace TeamProject.Tests
 			book2.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
 			lib.AddBook(book2);
 			lib.AddBook(book4);
-			
+
 
 			Assert.That(lib.SearchBookTitle("What do you mean")[0], Is.EqualTo(lib.books[1]));
 		}
@@ -153,7 +153,7 @@ namespace TeamProject.Tests
 
         }
 
-		
+
 
 		[Test]
 		public void ReserveBook()
@@ -163,7 +163,7 @@ namespace TeamProject.Tests
 			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
 
 			lib.AddBook(book1);
-			lib.ReserveBook("1");
+			lib.ReserveBook("1", "Candy");
 
 			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
 			//This book is not borrowed,so it cannot be reserved.
@@ -179,7 +179,7 @@ namespace TeamProject.Tests
 
 			string name = "Andy";
 			lib.BorrowBook("222", name);
-			lib.ReserveBook("222");
+			lib.ReserveBook("222", "Candy");
 			Assert.That(lib.SearchReservation("222"), Is.EqualTo(true));
 		}
 
@@ -194,11 +194,10 @@ namespace TeamProject.Tests
 
 			string name = "Mary";
 			lib.BorrowBook("1515151515", name);
-			lib.ReserveBook("1515151515");
+			lib.ReserveBook("1515151515", "Candy");
 			lib.DeleteReservation("1515151515");
 
 			Assert.That(lib.books[0].GetReservation(), Is.EqualTo(false));
-
 		}
 
         [Test]

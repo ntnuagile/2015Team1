@@ -21,7 +21,7 @@ namespace TeamProject
 		private string borrow_person;
 		private DateTime date_;
 		private bool reserved_ = false;
-		private string reserved_person;
+		private string reserve_person;
 
 		public void SetBookData(string[] d, int p)
 		{
@@ -45,6 +45,7 @@ namespace TeamProject
 		public bool GetAvailible() { return availible_; }
 		public bool GetReservation() { return reserved_; }
 
+
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
 		public void SetTitle(string Title) { title_ = Title; }
 		public void SetAuthor(string author) { author_ = author; }
@@ -54,7 +55,8 @@ namespace TeamProject
 		public void SetAvailible(bool availible) { availible_ = availible; }
 		public void SetReservation(bool reserved) { reserved_ = reserved;}
 
-		public void ChangeBorrowPerson(string name) { borrow_person = name; }
 
+		public void ChangeBorrowPerson(string name) { borrow_person = name; }
+		public void ChangeReservePerson(string name) { reserve_person = name; }
 	}
 }

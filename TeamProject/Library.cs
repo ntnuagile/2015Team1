@@ -108,12 +108,13 @@ namespace TeamProject
 			return true;
 		}
 
-		public void ReserveBook(string ISBN)
+		public void ReserveBook(string ISBN, string name)
 		{
 			int index = FindBookIndex(ISBN);
 			if (books[index].GetAvailible() == false)
 			{
-				books[index].SetReservation(true);	
+				books[index].SetReservation(true);
+				books[index].ChangeReservePerson(name);
 			}
 		}
 
