@@ -53,6 +53,7 @@ namespace TeamProject
 				books[index].SetDate(DateTime.Now);
 				books [index].ChangeStatusToBorrow ();
 				books [index].SetAvailible (false);
+				books[index].AddBorrowTime();
 				return "Borrow Success";
 			}
 			else
@@ -206,5 +207,18 @@ namespace TeamProject
 			return books[index].GetReadLater();
 		}
 
+		public Book Recommend()
+		{
+			int max = 0, max_index = 0;
+			for(int i=0; i<numofbooks; i+=1)
+			{
+				if(books[i].GetBorrowTime()>max && !books[i].Recommended())
+				{
+					max = books[i].GetBorrowTime();
+					max_index = i;
+				}
+			}
+			return books[max_index];
+		}
 	}
 }

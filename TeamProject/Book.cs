@@ -16,6 +16,8 @@ namespace TeamProject
 		private string seller_ = ""; //4
 		private string location_ = ""; //5
 		private int price_ = 0;
+		private int borrowed_time_ = 0;//被借閱次數
+		private bool recommended_ = false;
 
 		// About Borrow
 		private bool availible_ = true;
@@ -49,6 +51,8 @@ namespace TeamProject
 		public bool isAvailible() { return availible_; }
 		public bool isReserved() { return reserved_; }
 		public bool GetReadLater() { return later_;  }
+		public int GetBorrowTime() { return borrowed_time_; }
+		public bool Recommended() { return recommended_; }
 
 		public void SetID(int id) { id_ = id; }
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
@@ -61,6 +65,7 @@ namespace TeamProject
 		public void SetAvailible(bool availible) { availible_ = availible; }
 		public void SetReservation(string name) { reserved_ = true; reserve_person = name; }
 		public void CancelReservation() { reserved_ = false; reserve_person = ""; }
+		public void AddBorrowTime() { borrowed_time_ += 1; }
 
 		public void ChangeStatusToBorrow() { availible_ = false; }
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
