@@ -24,6 +24,10 @@ namespace TeamProject
 		public Book[] BorrowingBook = new Book[maxBorrowNum];
 		private int numofborrowing = 0;
 
+		//Save the list of a member's readlater books
+		public Book[] ReadLaterBook = new Book[maxBorrowNum];
+		private int numofReadLater = 0;
+
 		internal void AddBook(Book add)
 		{
 			books[numofbooks] = add;
@@ -185,6 +189,35 @@ namespace TeamProject
 			int index = FindBookIndex(ISBN);
 			if (books[index].isReserved() == true)
 				books[index].CancelReservation();
+		}
+
+		public void ReadLater(string ISBN, string name)
+		{
+			int index = FindBookIndex(ISBN);
+			if (index >= 0)
+			{
+				books[index].SetReadLater(name);
+			}
+		}
+
+		public bool CheckReadLater(string ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			return books[index].GetReadLater();
+		}
+
+		public Book[] ReadLaterList()
+		{
+			numofReadLater = 0;
+			for(int i=0; i<numofReadLater; i+=1)
+			{
+				if(books[i].GetReadLater() == true)
+				{
+					ReadLaterBook[numofReadLater] = books[i];
+					numofReadLater += 1;
+				}
+			}
+			return ReadLaterBook;
 		}
 	}
 }

@@ -24,6 +24,9 @@ namespace TeamProject
 		private bool reserved_ = false;
 		private string reserve_person;
 
+		//others
+		private bool later_ = false;
+
 		public void SetBookData(string[] d, int p)
 		{
 			ISBN_ = d[0];
@@ -45,6 +48,7 @@ namespace TeamProject
 		public string GetBorrowPerson() { return borrow_person; }
 		public bool isAvailible() { return availible_; }
 		public bool isReserved() { return reserved_; }
+		public bool GetReadLater() { return later_;  }
 
 		public void SetID(int id) { id_ = id; }
 		public void SetISBN(string ISBN) { ISBN_ = ISBN; }
@@ -60,6 +64,7 @@ namespace TeamProject
 
 		public void ChangeStatusToBorrow() { availible_ = false; }
 		public void ChangeBorrowPerson(string name) { borrow_person = name; }
+		public void SetReadLater(string name) { later_ = true; }
 		//public void ChangeReservePerson(string name) { reserve_person = name; }
 	}
 }

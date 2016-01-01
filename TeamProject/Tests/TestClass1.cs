@@ -94,7 +94,6 @@ namespace TeamProject.Tests
 				throw new Exception();
 
 
-
 			Assert.That(Lib.books[0].GetISBN(), Is.EqualTo("1"));
 			Assert.That(Lib.books[0].GetLocation(), Is.EqualTo("Gong Guang Library"));
 			Assert.That(Lib.books[0].GetTitle(), Is.EqualTo("This is a edited Book"));
@@ -366,5 +365,41 @@ namespace TeamProject.Tests
             Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
             Assert.That(mb.members[1].GetName(), Is.EqualTo(null));
         }
+
+		[Test]
+		public void ReadLaterTest()
+		{
+			Library lib2 = new Library();
+			Book book01 = new Book();
+			Book book02 = new Book();
+			Book book03 = new Book();
+
+			book01.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book02.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book03.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+
+			lib2.AddBook(book01);
+			lib2.AddBook(book02);
+			lib2.AddBook(book03);
+			Assert.That(lib2.CheckReadLater("1"), Is.EqualTo(false));
+			Assert.That(lib2.CheckReadLater("2"), Is.EqualTo(false));
+			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
+
+			string name = "Sally";
+
+			book01.SetReadLater("Sally");
+			book02.SetReadLater("Sally");
+			Assert.That(lib2.CheckReadLater("1"), Is.EqualTo(true));
+			Assert.That(lib2.CheckReadLater("2"), Is.EqualTo(true));
+			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
+
+		}
+
+		[Test]
+		public void ReadLaterList()
+		{
+
+		}
 	}
+
 }
