@@ -28,25 +28,13 @@ namespace TeamProject
 		public Book[] ReadLaterBook = new Book[maxBorrowNum];
 		private int numofReadLater = 0;
 
-		private bool ExistISBN(Book b)
-		{
-			for(int i=0; i<numofbooks; i+=1)
-			{
-				if (b.GetISBN() == books[i].GetISBN()) return true;
-			}
-			return false;
-		}
-
 		internal void AddBook(Book add)
 		{
-			if(!ExistISBN(add))
-			{
 				books[numofbooks] = add;
 				books[numofbooks].SetDate(DateTime.Now);
 				books[numofbooks].SetID(idCounter_);
 				idCounter_ += 1;
 				numofbooks += 1;
-			}
 		}
 
 		public int FindBookIndex(String ISBN)
