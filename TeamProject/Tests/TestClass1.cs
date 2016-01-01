@@ -336,13 +336,15 @@ namespace TeamProject.Tests
 			testborrowing[0] = book1;
 			testborrowing[1] = book3;
 
-			String name = "Mandy";
+			Member m = new Member();
+			m.SetName("Mandy");
+			m.SetPassword("123");
+			m.SetIsAdministrator(false);
 
-			Assert.That(lib.BorrowBook("1", name), Is.EqualTo("Borrow Success"));
-			Assert.That(lib.BorrowBook("3", name), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook("1", m.GetName()), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook("3", m.GetName()), Is.EqualTo("Borrow Success"));
 
-			Assert.That(lib.CheckBorrowing(name), Is.EqualTo(testborrowing));
-
+			Assert.That(lib.CheckBorrowing(m), Is.EqualTo(testborrowing));
 		}
 
         [Test]

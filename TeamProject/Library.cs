@@ -154,12 +154,12 @@ namespace TeamProject
 
 		// End of Edit book
 
-		public Book[] CheckBorrowing(string name)
+		public Book[] CheckBorrowing(Member m)
 		{
 			numofborrowing = 0;
 			for(int i=0; i<numofbooks; i+=1)
 			{
-				if(books[i].GetBorrowPerson() == name)
+				if(books[i].GetBorrowPerson() == m.GetName())
 				{
 					BorrowingBook[numofborrowing] = books[i];
 					numofborrowing += 1;
