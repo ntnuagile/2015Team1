@@ -394,12 +394,6 @@ namespace TeamProject.Tests
 			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
 
 		}
-
-		[Test]
-		public void ReadLaterList()
-		{
-
-		}
 	}
 
 }

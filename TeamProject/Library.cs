@@ -206,18 +206,5 @@ namespace TeamProject
 			return books[index].GetReadLater();
 		}
 
-		public Book[] ReadLaterList()
-		{
-			numofReadLater = 0;
-			for(int i=0; i<numofReadLater; i+=1)
-			{
-				if(books[i].GetReadLater() == true)
-				{
-					ReadLaterBook[numofReadLater] = books[i];
-					numofReadLater += 1;
-				}
-			}
-			return ReadLaterBook;
-		}
 	}
 }
