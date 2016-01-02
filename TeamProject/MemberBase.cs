@@ -16,20 +16,21 @@ namespace TeamProject
 
 		public void AddMember(Member m)
 		{
-            if(SearchMember(m.GetName()) == false)
+            if(SearchMember(m.GetName()) == false  &&  SearchMember(m.GetEmail()) == false)
             {
                 members[numOfmembers_] = m;
 			    members[numOfmembers_].SetDate(DateTime.Now);
 			    numOfmembers_ += 1;
             }
 		}
-        public void EditMember(Member m,string name,string password,DateTime d)
+        public void EditMember(Member m,string name,string password,DateTime d,string email)
         {
             if (SearchMember(m.GetName()) == true)
             {
                 m.SetName(name);
                 m.SetPassword(password);
                 m.SetDate(d);
+                m.SetEmail(email);
                 members[numOfmembers_] = m;
             }
         }
@@ -41,5 +42,13 @@ namespace TeamProject
 					return true;
 			return false;
 		}
+
+        public bool SearchEmail(String email)
+        {
+            for (int i = 0; i < numOfmembers_; ++i)
+                if (members[i].GetEmail() == email)
+                    return true;
+            return false;
+        }
 	}
 }

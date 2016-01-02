@@ -26,7 +26,7 @@ namespace TeamProject
 
 		//Save the list of a member's readlater books
 		public Book[] ReadLaterBook = new Book[maxBorrowNum];
-		private int numofReadLater = 0;
+		// private int numofReadLater = 0;
 
 		internal void AddBook(Book add)
 		{

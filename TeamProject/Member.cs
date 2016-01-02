@@ -14,6 +14,7 @@ namespace TeamProject
 		private bool isAdministrator_;
 		private string inviter_;
 		private DateTime regtime_;
+        private string email_;
 
         //public void SetID(string id) { id_ = id; }
 		public void SetName(string name) { name_ = name; }
@@ -21,11 +22,13 @@ namespace TeamProject
 		public void SetIsAdministrator(bool isAdministrator) { isAdministrator_ = isAdministrator; }
 		public void SetInviter(string inviter) { inviter_ = inviter; }
 		public void SetDate(DateTime d) { regtime_ = d; }
+        public void SetEmail(string email) { email_ = email; }
 
 		public string GetName() { return name_; }
 		public string GetPassword() { return password_; }
 		public bool GetIsAdministrator() { return isAdministrator_; } //GetType has been used in default.
 		public string GetInviter() { return inviter_; }
 		public DateTime GetRegtime() { return regtime_; }
+        public string GetEmail() { return email_; }
 	}
 }

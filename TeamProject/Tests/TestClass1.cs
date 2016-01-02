@@ -183,11 +183,13 @@ namespace TeamProject.Tests
 			m.SetName("test");
 			m.SetPassword("123");
             m.SetIsAdministrator(false);
+            m.SetEmail("test.com");
 
 			mb.AddMember(m);
 			Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
 			Assert.That(mb.members[0].GetPassword(), Is.EqualTo("123"));
 			Assert.That(mb.members[0].GetIsAdministrator(), Is.EqualTo(false));
+            Assert.That(mb.members[0].GetEmail(), Is.EqualTo("test.com"));
 			//Assert.That(mb.members[0].GetInviter(), Is.EqualTo("self"));
 			//Assert.That(mb.members[0].GetRegtime(), Is.EqualTo(DateTime.Now));
 
@@ -204,7 +206,7 @@ namespace TeamProject.Tests
 
             mb.AddMember(m);
 
-            mb.EditMember(m, "yEEEE", "689689", DateTime.Now);
+            mb.EditMember(m, "yEEEE", "689689", DateTime.Now,"test.com");
             Assert.That(mb.members[0].GetName(), Is.EqualTo("yEEEE"));
             Assert.That(mb.members[0].GetPassword(), Is.EqualTo("689689"));
         }
@@ -356,16 +358,28 @@ namespace TeamProject.Tests
             m.SetName("test");
             m.SetPassword("123");
             m.SetIsAdministrator(false);
+            m.SetEmail("test.com");
+            mb.AddMember(m);
 
             Member n = new Member();
-            m.SetName("test");
-            m.SetPassword("321");
-            m.SetIsAdministrator(false);
+            n.SetName("test");
+            n.SetPassword("321");
+            n.SetIsAdministrator(false);
+            n.SetEmail("test1.com");
+            mb.AddMember(n);
+
+            Member o = new Member();
+            o.SetName("test11");
+            o.SetPassword("321");
+            o.SetIsAdministrator(false);
+            o.SetEmail("test.com");
+            mb.AddMember(o);
 
             mb.AddMember(m);
             mb.AddMember(n);
             Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
             Assert.That(mb.members[1].GetName(), Is.EqualTo(null));
+            Assert.That(mb.members[2].GetName(), Is.EqualTo(null));
         }
 
 		[Test]
@@ -386,8 +400,6 @@ namespace TeamProject.Tests
 			Assert.That(lib2.CheckReadLater("1"), Is.EqualTo(false));
 			Assert.That(lib2.CheckReadLater("2"), Is.EqualTo(false));
 			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
-
-			string name = "Sally";
 
 			book01.SetReadLater("Sally");
 			book02.SetReadLater("Sally");
