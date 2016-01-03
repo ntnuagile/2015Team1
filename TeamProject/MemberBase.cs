@@ -42,7 +42,7 @@ namespace TeamProject
 
 		/* ===================================================================================== */
 
-		public bool SearchMember(String name)
+		public bool SearchMember(string name)
 		{
 			for (int i = 0; i < numOfmembers_; ++i)
 				if (members[i].GetName() == name)
@@ -50,7 +50,7 @@ namespace TeamProject
 			return false;
 		}
 
-		public bool SearchEmail(String email)
+		public bool SearchEmail(string email)
 		{
 			for (int i = 0; i < numOfmembers_; ++i)
 				if (members[i].GetEmail() == email)

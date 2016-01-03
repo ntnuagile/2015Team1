@@ -72,7 +72,7 @@ namespace TeamProject
 			return -1;
 		}
 
-		public int FindBookIndex(String ISBN)
+		public int FindBookIndex(string ISBN)
 		{
 			for(int i = 0 ; i < numofbooks; i += 1)
 				if (books[i].GetISBN() == ISBN)
@@ -94,14 +94,14 @@ namespace TeamProject
 			return true;
 		}
 
-		public bool EditBookbyTitle(Book edit, String Title, int choose)
+		public bool EditBookbyTitle(Book edit, string Title, int choose)
 		{
 			return EditBook(edit, FindBookIndexbyID(SearchTitle(Title)[choose]));
 			// SearchTitle returns books' id, choose to control which book's id to edit.
 			// FindBookIndexbyID returns the book's index in the array
 		}
 
-		public int[] SearchTitle(String title) //return ID
+		public int[] SearchTitle(string title) //return ID
 		{
 			int[] findID = new int [maxFindNum];
 			int counter = 0;
@@ -114,7 +114,7 @@ namespace TeamProject
 			return findID;
 		}
 
-		public Book[] SearchBookTitle(String title)
+		public Book[] SearchBookTitle(string title)
 		{
 			for(int i = 0 ; i < numofbooks ; i += 1)
 				if(books[i].GetTitle() == title)
@@ -125,7 +125,7 @@ namespace TeamProject
 			return findResult;
 		}
 
-		public Book[] SearchBookAuthor(String Author)
+		public Book[] SearchBookAuthor(string Author)
 		{
 			for(int i = 0 ; i < numofbooks ; i += 1)
 				if(books[i].GetAuthor() == Author)
@@ -136,7 +136,7 @@ namespace TeamProject
 			return findResult;
 		}
 
-		public string BorrowBook(String ISBN, Member member)
+		public string BorrowBook(string ISBN, Member member)
 		{
 			int index = FindBookIndex(ISBN);
 			if (index >= 0 && books [index].isAvailible () == true) {
@@ -153,7 +153,7 @@ namespace TeamProject
 
 		/* ===================================================================================== */
 
-		public string ReturnBook(String ISBN)
+		public string ReturnBook(string ISBN)
 		{
 			int index = FindBookIndex(ISBN);
 			if (index >= 0 && books[index].isAvailible() == false)
