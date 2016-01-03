@@ -65,6 +65,7 @@ namespace TeamProject
 		public void SetAvailible(bool availible) { availible_ = availible; }
 		public void SetReservation(string name) { reserved_ = true; reserve_person = name; }
 		public void CancelReservation() { reserved_ = false; reserve_person = ""; }
+		public void BeRecommended() { recommended_ = true; }
 		public void AddBorrowTime() { borrowed_time_ += 1; }
 
 		public void ChangeStatusToBorrow() { availible_ = false; }

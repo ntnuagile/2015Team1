@@ -408,6 +408,94 @@ namespace TeamProject.Tests
 			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
 
 		}
+		[Test]
+		public void AddBorrowTime()
+		{
+			Library lib = new Library();
+
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			string name1 = "Judy";
+			string name2 = "John";
+			lib.BorrowBook("1", name1);
+			lib.BorrowBook("2", name2);
+
+			lib.ReturnBook("1");
+			lib.BorrowBook("1", name2);
+
+			Assert.That(lib.books[0].GetBorrowTime(), Is.EqualTo(2));
+			Assert.That(lib.books[2].GetBorrowTime(), Is.EqualTo(0));
+		}
+
+		[Test]
+		public void RecommendBook()
+		{
+			Library lib = new Library();
+
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			lib.BorrowBook("1", "Rita");
+			lib.ReturnBook("1");
+			lib.BorrowBook("1", "Jason");
+			lib.ReturnBook("1");
+			lib.BorrowBook("2", "Zack");
+			lib.ReturnBook("2");
+			lib.BorrowBook("1", "Wendy");
+			lib.ReturnBook("1");
+
+			Assert.That(lib.Recommend(), Is.EqualTo(lib.books[0]));
+
+		}
+		[Test]
+		public void ReturnNotRecommended()
+		{
+			Library lib = new Library();
+
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			lib.BorrowBook("1", "Rita");
+			lib.ReturnBook("1");
+			lib.BorrowBook("1", "Jason");
+			lib.ReturnBook("1");
+			lib.BorrowBook("2", "Zack");
+			lib.ReturnBook("2");
+			lib.BorrowBook("1", "Wendy");
+			lib.ReturnBook("1");
+
+			lib.Recommend();
+
+			Assert.That(lib.Recommend(), Is.EqualTo(lib.books[1]));
+		}
 	}
 
 }

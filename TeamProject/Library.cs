@@ -218,6 +218,7 @@ namespace TeamProject
 					max_index = i;
 				}
 			}
+			books[max_index].BeRecommended();
 			return books[max_index];
 		}
 	}
