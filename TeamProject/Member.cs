@@ -9,7 +9,7 @@ namespace TeamProject
 	public class Member
 	{
 		//private int id_;
-		private string name_;
+		private string name_ = "";
 		private string password_;
 		private bool isAdministrator_;
 		private string inviter_;

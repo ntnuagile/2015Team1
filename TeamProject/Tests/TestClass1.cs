@@ -160,6 +160,31 @@ namespace TeamProject.Tests
 		}
 
 		[Test]
+		public void SearchAuthor()
+		{
+			Library lib = new Library();
+
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "Learning Japanese", "Candy", "Youtube", "Gong Guan Library" }, 520);
+			book2.SetBookData(new String[] { "2", "Computer Science", "Ken", "Pearson", "Gong Guan Library" }, 448);
+			book3.SetBookData(new String[] { "3", "Something Incredible", "Candy", "Happy", "Gong Guan Library" }, 361);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			Book[] books = new Book[2];
+			books[0] = book1;
+			books[1] = book3;
+
+			Assert.That(lib.SearchBookAuthor("Candy")[0], Is.EqualTo(books[0]));
+			Assert.That(lib.SearchBookAuthor("Candy")[1], Is.EqualTo(books[1]));
+		}
+
+		[Test]
 		public void Borrow3()
 		{
 			Library lib = new Library();
@@ -168,9 +193,10 @@ namespace TeamProject.Tests
 			book3.SetBookData(new String[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
 			lib.AddBook(book3);
 
-			String name = "Jeremy";
-			lib.BorrowBook("1515151515", name);
-			Assert.That(lib.books[0].GetBorrowPerson(), Is.EqualTo("Jeremy"));
+			Member Jeremy = new Member();
+			Jeremy.SetName("Jeremy");
+			lib.BorrowBook("1515151515", Jeremy);
+			Assert.That(lib.books[0].GetBorrowPerson(), Is.EqualTo(Jeremy));
 			Assert.That(lib.books[0].GetISBN(), Is.EqualTo("1515151515"));
 		}
 
@@ -239,8 +265,10 @@ namespace TeamProject.Tests
 			Book book1 = new Book();
 			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
 
+			Member Candy = new Member ();
+			Candy.SetName("Candy");
 			lib.AddBook(book1);
-			lib.ReserveBook("1", "Candy");
+			lib.ReserveBook("1", Candy);
 
 			Assert.That(lib.books[0].isReserved(), Is.EqualTo(false));
 			// This book is not borrowed,so it cannot be reserved.
@@ -255,9 +283,12 @@ namespace TeamProject.Tests
 			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
 			lib.AddBook(book4);
 
-			string name = "Andy";
-			lib.BorrowBook("222", name);
-			lib.ReserveBook("222", "Candy");
+			Member Andy = new Member ();
+			Andy.SetName ("Andy");
+			Member Candy = new Member ();
+			Candy.SetName ("Candy");
+			lib.BorrowBook("222", Andy);
+			lib.ReserveBook("222", Candy);
 			Assert.That(lib.SearchReservation("222"), Is.EqualTo(true));
 		}
 
@@ -270,9 +301,12 @@ namespace TeamProject.Tests
 			book3.SetBookData(new String[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
 			lib.AddBook(book3);
 
-			string name = "Mary";
-			lib.BorrowBook("1515151515", name);
-			lib.ReserveBook("1515151515", "Candy");
+			Member Mary = new Member();
+			Mary.SetName("Mary");
+			Member Candy = new Member();
+			Candy.SetName("Candy");
+			lib.BorrowBook("1515151515", Mary);
+			lib.ReserveBook("1515151515", Candy);
 			lib.CancelReservation("1515151515");
 
 			Assert.That(lib.books[0].isReserved(), Is.EqualTo(false));
@@ -298,9 +332,9 @@ namespace TeamProject.Tests
             Assert.That(mb.SearchMember("Mark"), Is.EqualTo(false));
             Assert.That(mb.SearchMember(name), Is.EqualTo(true));
 
-			Assert.That(lib.BorrowBook("456", name), Is.EqualTo("Book not found"));
-			Assert.That(lib.BorrowBook(book_id, name), Is.EqualTo("Borrow Success"));
-			Assert.That(lib.BorrowBook(book_id, name), Is.EqualTo("This book already be borrowed"));
+			Assert.That(lib.BorrowBook("456", m), Is.EqualTo("Book not found"));
+			Assert.That(lib.BorrowBook(book_id, m), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook(book_id, m), Is.EqualTo("This book already be borrowed"));
         }
 
         [Test]
@@ -343,8 +377,8 @@ namespace TeamProject.Tests
 			m.SetPassword("123");
 			m.SetIsAdministrator(false);
 
-			Assert.That(lib.BorrowBook("1", m.GetName()), Is.EqualTo("Borrow Success"));
-			Assert.That(lib.BorrowBook("3", m.GetName()), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook("1", m), Is.EqualTo("Borrow Success"));
+			Assert.That(lib.BorrowBook("3", m), Is.EqualTo("Borrow Success"));
 
 			Assert.That(lib.CheckBorrowing(m), Is.EqualTo(testborrowing));
 		}
@@ -355,31 +389,20 @@ namespace TeamProject.Tests
             MemberBase mb = new MemberBase();
 
             Member m = new Member();
-            m.SetName("test");
-            m.SetPassword("123");
-            m.SetIsAdministrator(false);
-            m.SetEmail("test.com");
-            mb.AddMember(m);
+			Member n = new Member();
+			Member o = new Member();
+			m.SetName("test");
+			n.SetName("test");
+			o.SetName("test11");
 
-            Member n = new Member();
-            n.SetName("test");
-            n.SetPassword("321");
-            n.SetIsAdministrator(false);
-            n.SetEmail("test1.com");
-            mb.AddMember(n);
-
-            Member o = new Member();
-            o.SetName("test11");
-            o.SetPassword("321");
-            o.SetIsAdministrator(false);
-            o.SetEmail("test.com");
-            mb.AddMember(o);
-
+			mb.AddMember(m);
+			mb.AddMember(n);
+			mb.AddMember(o);
             mb.AddMember(m);
             mb.AddMember(n);
-            Assert.That(mb.members[0].GetName(), Is.EqualTo("test"));
-            Assert.That(mb.members[1].GetName(), Is.EqualTo(null));
-            Assert.That(mb.members[2].GetName(), Is.EqualTo(null));
+            Assert.That(mb.members[0], Is.EqualTo(m));
+			Assert.That(mb.members[1], Is.EqualTo(o));
+            Assert.That(mb.members[2], Is.EqualTo(null));
         }
 
 		[Test]
@@ -406,7 +429,6 @@ namespace TeamProject.Tests
 			Assert.That(lib2.CheckReadLater("1"), Is.EqualTo(true));
 			Assert.That(lib2.CheckReadLater("2"), Is.EqualTo(true));
 			Assert.That(lib2.CheckReadLater("3"), Is.EqualTo(false));
-
 		}
 		[Test]
 		public void AddBorrowTime()
@@ -425,13 +447,15 @@ namespace TeamProject.Tests
 			lib.AddBook(book2);
 			lib.AddBook(book3);
 
-			string name1 = "Judy";
-			string name2 = "John";
-			lib.BorrowBook("1", name1);
-			lib.BorrowBook("2", name2);
+			Member Judy = new Member();
+			Judy.SetName ("Judy");
+			Member John = new Member();
+			John.SetName ("John");
+			lib.BorrowBook("1", Judy);
+			lib.BorrowBook("2", John);
 
 			lib.ReturnBook("1");
-			lib.BorrowBook("1", name2);
+			lib.BorrowBook("1", John);
 
 			Assert.That(lib.books[0].GetBorrowTime(), Is.EqualTo(2));
 			Assert.That(lib.books[2].GetBorrowTime(), Is.EqualTo(0));
@@ -454,13 +478,22 @@ namespace TeamProject.Tests
 			lib.AddBook(book2);
 			lib.AddBook(book3);
 
-			lib.BorrowBook("1", "Rita");
+			Member Rita = new Member();
+			Member Jason = new Member();
+			Member Zack = new Member();
+			Member Wendy = new Member();
+			Rita.SetName("Rita");
+			Jason.SetName("Jason");
+			Zack.SetName("Zack");
+			Wendy.SetName("Wendy");
+
+			lib.BorrowBook("1", Rita);
 			lib.ReturnBook("1");
-			lib.BorrowBook("1", "Jason");
+			lib.BorrowBook("1", Jason);
 			lib.ReturnBook("1");
-			lib.BorrowBook("2", "Zack");
+			lib.BorrowBook("2", Zack);
 			lib.ReturnBook("2");
-			lib.BorrowBook("1", "Wendy");
+			lib.BorrowBook("1", Wendy);
 			lib.ReturnBook("1");
 
 			Assert.That(lib.Recommend(), Is.EqualTo(lib.books[0]));
@@ -483,19 +516,60 @@ namespace TeamProject.Tests
 			lib.AddBook(book2);
 			lib.AddBook(book3);
 
-			lib.BorrowBook("1", "Rita");
+			Member Rita = new Member();
+			Member Jason = new Member();
+			Member Zack = new Member();
+			Member Wendy = new Member();
+			Rita.SetName("Rita");
+			Jason.SetName("Jason");
+			Zack.SetName("Zack");
+			Wendy.SetName("Wendy");
+
+			lib.BorrowBook("1", Rita);
 			lib.ReturnBook("1");
-			lib.BorrowBook("1", "Jason");
+			lib.BorrowBook("1", Jason);
 			lib.ReturnBook("1");
-			lib.BorrowBook("2", "Zack");
+			lib.BorrowBook("2", Zack);
 			lib.ReturnBook("2");
-			lib.BorrowBook("1", "Wendy");
+			lib.BorrowBook("1", Wendy);
 			lib.ReturnBook("1");
 
 			lib.Recommend();
 
 			Assert.That(lib.Recommend(), Is.EqualTo(lib.books[1]));
 		}
-	}
 
+		[Test]
+		public void TestSort()
+		{
+			Library lib2 = new Library();
+			Book book01 = new Book();
+			Book book02 = new Book();
+			Book book03 = new Book();
+
+			book01.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book02.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book03.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+
+			book01.SetTopic("Internet");
+			book02.SetTopic("Computer");
+			book03.SetTopic("Computer");
+
+			lib2.AddBook(book01);
+			lib2.AddBook(book02);
+			lib2.AddBook(book03);
+
+			Assert.That(book01.GetTopic(), Is.EqualTo("Internet"));
+			Assert.That(book02.GetTopic(), Is.EqualTo("Computer"));
+			Assert.That(book03.GetTopic(), Is.EqualTo("Computer"));
+		}
+
+		[Test]
+		public void TestAddWaitToBuy()
+		{
+			Library lib = new Library();
+			Assert.That(lib.AddWaitToBuy("Computer Science", "HAHA", "Google", "Jerry"), Is.EqualTo("Opinion Save"));
+			Assert.That(lib.AddWaitToBuy ("Bad Apple", "YOYO", "Yahoo", "Jeremy"), Is.EqualTo ("Opinion Save"));
+		}
+	}
 }

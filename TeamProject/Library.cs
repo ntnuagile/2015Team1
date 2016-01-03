@@ -11,6 +11,7 @@ namespace TeamProject
 		public const int maxBookNum = 10000;
 		public const int maxBorrowNum = 10;
 		private const int maxFindNum = 100;
+		private const int maxWaitToBuyNum = 100;
 
 		public int numofbooks = 0;
 		public Book[] books = new Book[maxBookNum];
@@ -27,6 +28,9 @@ namespace TeamProject
 		//Save the list of a member's readlater books
 		public Book[] ReadLaterBook = new Book[maxBorrowNum];
 		// private int numofReadLater = 0;
+
+		private string[,] WaitToBuy = new string[maxWaitToBuyNum, 4];	//Title, Author, Seller, Advisor
+		private int numofWaitToBuy = 0;
 
 		internal void AddBook(Book add)
 		{
@@ -45,11 +49,11 @@ namespace TeamProject
 			return -1;
 		}
 
-		public string BorrowBook(String ISBN, String name)
+		public string BorrowBook(String ISBN, Member member)
 		{
 			int index = FindBookIndex(ISBN);
 			if (index >= 0 && books [index].isAvailible () == true) {
-				books [index].ChangeBorrowPerson (name);
+				books [index].ChangeBorrowPerson (member);
 				books[index].SetDate(DateTime.Now);
 				books [index].ChangeStatusToBorrow ();
 				books [index].SetAvailible (false);
@@ -160,7 +164,7 @@ namespace TeamProject
 			numofborrowing = 0;
 			for(int i=0; i<numofbooks; i+=1)
 			{
-				if(books[i].GetBorrowPerson() == m.GetName())
+				if(books[i].GetBorrowPerson() == m)
 				{
 					BorrowingBook[numofborrowing] = books[i];
 					numofborrowing += 1;
@@ -170,12 +174,12 @@ namespace TeamProject
 		}
 
 
-		public void ReserveBook(string ISBN, string name)
+		public void ReserveBook(string ISBN, Member member)
 		{
 			int index = FindBookIndex(ISBN);
 			if (books[index].isAvailible() == false)
 			{
-				books[index].SetReservation(name);
+				books[index].SetReservation(member);
 			}
 		}
 
@@ -220,6 +224,17 @@ namespace TeamProject
 			}
 			books[max_index].BeRecommended();
 			return books[max_index];
+		}
+
+		public string AddWaitToBuy(string title, string author, string seller, string advisor)
+		{
+			if (numofWaitToBuy >= maxWaitToBuyNum) return "Overflow";
+			WaitToBuy [numofWaitToBuy, 0] = title;
+			WaitToBuy [numofWaitToBuy, 1] = author;
+			WaitToBuy [numofWaitToBuy, 2] = seller;
+			WaitToBuy [numofWaitToBuy, 3] = advisor;
+			numofWaitToBuy++;
+			return "Opinion Save";
 		}
 	}
 }
