@@ -32,13 +32,44 @@ namespace TeamProject
 		private string[,] WaitToBuy = new string[maxWaitToBuyNum, 4];	//Title, Author, Seller, Advisor
 		private int numofWaitToBuy = 0;
 
-		internal void AddBook(Book add)
+		internal bool AddBook(Book add)
 		{
-				books[numofbooks] = add;
-				books[numofbooks].SetDate(DateTime.Now);
-				books[numofbooks].SetID(idCounter_);
-				idCounter_ += 1;
-				numofbooks += 1;
+			if (numofbooks == maxBookNum)
+				return false;
+			books[numofbooks] = add;
+			books[numofbooks].SetDate(DateTime.Now);
+			books[numofbooks].SetID(idCounter_);
+			idCounter_ += 1;
+			numofbooks += 1;
+			return true;
+		}
+
+		public bool DeleteBook(string ISBN)
+		{
+			int index = FindBookIndex(ISBN);
+			if (index < 0)
+			{
+				return false;
+			}
+			else
+			{
+				books[index].SetISBN("");
+				books[index].SetTitle("");
+				books[index].SetAuthor("");
+				books[index].SetSeller("");
+				books[index].SetLocation("");
+				books[index].SetPrice(0);
+				numofbooks -= 1;
+				return true;
+			}
+		}
+
+		public int FindBookIndexbyID(int ID)
+		{
+			for (int i = 0; i < numofbooks; i += 1)
+				if (books[i].GetID() == ID)
+					return i;
+			return -1;
 		}
 
 		public int FindBookIndex(String ISBN)
@@ -49,46 +80,38 @@ namespace TeamProject
 			return -1;
 		}
 
-		public string BorrowBook(String ISBN, Member member)
+		public bool EditBook(Book edit, int index)
 		{
-			int index = FindBookIndex(ISBN);
-			if (index >= 0 && books [index].isAvailible () == true) {
-				books [index].ChangeBorrowPerson (member);
-				books[index].SetDate(DateTime.Now);
-				books [index].ChangeStatusToBorrow ();
-				books [index].SetAvailible (false);
-				books[index].AddBorrowTime();
-				return "Borrow Success";
-			}
-			else
-				return (index < 0) ? "Book not found" : "This book already be borrowed";
+			if (index == -1)
+				return false;
+
+			books[index].SetISBN(edit.GetISBN());
+			books[index].SetTitle(edit.GetTitle());
+			books[index].SetAuthor(edit.GetAuthor());
+			books[index].SetSeller(edit.GetSeller());
+			books[index].SetLocation(edit.GetLocation());
+			books[index].SetPrice(edit.GetPrice());
+			return true;
 		}
 
-		public string ReturnBook(String ISBN)
+		public bool EditBookbyTitle(Book edit, String Title, int choose)
 		{
-			int index = FindBookIndex(ISBN);
-			if (index >= 0 && books[index].isAvailible() == false)
-			{
-				books[index].ChangeBorrowPerson(null);
-				books[index].SetAvailible(true);
-				return "Return Success";
-			}
-			else
-				return (index < 0) ? "Book not found" : "This book already be returned";
+			return EditBook(edit, FindBookIndexbyID(SearchTitle(Title)[choose]));
+			// SearchTitle returns books' id, choose to control which book's id to edit.
+			// FindBookIndexbyID returns the book's index in the array
 		}
-		public void DeleteBook(string ISBN)
+
+		public int[] SearchTitle(String title)
 		{
-			int index = FindBookIndex(ISBN);
-			if(index >= 0)
-			{
-				books[index].SetISBN("");
-				books[index].SetTitle("");
-				books[index].SetAuthor("");
-				books[index].SetSeller("");
-				books[index].SetLocation("");
-				books[index].SetPrice(0);
-			}
-			numofbooks -= 1;
+			int[] findID = new int [maxFindNum];
+			int counter = 0;
+			for (int i = 0; i < numofbooks; i += 1)
+				if (books[i].GetTitle() == title)
+				{
+					findID[counter] = books[i].GetID();
+					counter += 1;
+				}
+			return findID;
 		}
 
 		public Book[] SearchBookTitle(String title)
@@ -113,51 +136,35 @@ namespace TeamProject
 			return findResult;
 		}
 
-		// Edit book
-
-		public int FindBookIndexbyID(int ID)
+		public string BorrowBook(String ISBN, Member member)
 		{
-			for (int i = 0; i < numofbooks; i += 1)
-				if (books[i].GetID() == ID)
-					return i;
-			return -1;
+			int index = FindBookIndex(ISBN);
+			if (index >= 0 && books [index].isAvailible () == true) {
+				books [index].ChangeBorrowPerson (member);
+				books[index].SetDate(DateTime.Now);
+				books [index].ChangeStatusToBorrow ();
+				books [index].SetAvailible (false);
+				books[index].AddBorrowTime();
+				return "Borrow Success";
+			}
+			else
+				return (index < 0) ? "Book not found" : "This book already be borrowed";
 		}
 
-		public int[] SearchTitle(String title)
+		/* ===================================================================================== */
+
+		public string ReturnBook(String ISBN)
 		{
-			int[] findID = new int [maxFindNum];
-			int counter = 0;
-			for (int i = 0; i < numofbooks; i += 1)
-				if (books[i].GetTitle() == title)
-				{
-					findID[counter] = books[i].GetID();
-					counter += 1;
-				}
-			return findID;
+			int index = FindBookIndex(ISBN);
+			if (index >= 0 && books[index].isAvailible() == false)
+			{
+				books[index].ChangeBorrowPerson(null);
+				books[index].SetAvailible(true);
+				return "Return Success";
+			}
+			else
+				return (index < 0) ? "Book not found" : "This book already be returned";
 		}
-
-		public bool EditBook(Book edit, int index)
-		{
-			if (index == -1)
-				return false;
-
-			books[index].SetISBN(edit.GetISBN());
-			books[index].SetTitle(edit.GetTitle());
-			books[index].SetAuthor(edit.GetAuthor());
-			books[index].SetSeller(edit.GetSeller());
-			books[index].SetLocation(edit.GetLocation());
-			books[index].SetPrice(edit.GetPrice());
-			return true;
-		}
-
-		public bool EditBookbyTitle(Book edit, String Title, int choose)
-		{
-			return EditBook(edit, FindBookIndexbyID(SearchTitle(Title)[choose]));
-			//SearchTitle returns books' id, choose to control which book's id to edit.
-			//FindBookIndexbyID returns the book's index in the array
-		}
-
-		// End of Edit book
 
 		public Book[] CheckBorrowing(Member m)
 		{

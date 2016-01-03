@@ -14,26 +14,33 @@ namespace TeamProject
 
 		public int MemberNum() {return numOfmembers_;}
 
-		public void AddMember(Member m)
+		public bool AddMember(Member m)
 		{
-            if(SearchMember(m.GetName()) == false  &&  SearchMember(m.GetEmail()) == false)
-            {
-                members[numOfmembers_] = m;
-			    members[numOfmembers_].SetDate(DateTime.Now);
-			    numOfmembers_ += 1;
-            }
+			if (SearchMember (m.GetName ()) || SearchEmail (m.GetEmail ()) )
+			{
+				// If this guy is in memberbase
+				return false;
+			}
+
+			members [numOfmembers_] = m;
+			numOfmembers_ += 1;
+			return true;
 		}
-        public void EditMember(Member m,string name,string password,DateTime d,string email)
+
+        public bool EditMember(Member m, string name, string password, string email)
         {
-            if (SearchMember(m.GetName()) == true)
+            if (SearchMember(m.GetName()))
             {
                 m.SetName(name);
                 m.SetPassword(password);
-                m.SetDate(d);
                 m.SetEmail(email);
                 members[numOfmembers_] = m;
+				return true;
             }
+			return false;
         }
+
+		/* ===================================================================================== */
 
 		public bool SearchMember(String name)
 		{
