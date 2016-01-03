@@ -185,6 +185,31 @@ namespace TeamProject.Tests
 		}
 
 		[Test]
+		public void SearchAuthor()
+		{
+			Library lib = new Library();
+
+			Book book1 = new Book();
+			Book book2 = new Book();
+			Book book3 = new Book();
+
+			book1.SetBookData(new String[] { "1", "Learning Japanese", "Candy", "Youtube", "Gong Guan Library" }, 520);
+			book2.SetBookData(new String[] { "2", "Computer Science", "Ken", "Pearson", "Gong Guan Library" }, 448);
+			book3.SetBookData(new String[] { "3", "Something Incredible", "Candy", "Happy", "Gong Guan Library" }, 361);
+
+			lib.AddBook(book1);
+			lib.AddBook(book2);
+			lib.AddBook(book3);
+
+			Book[] books = new Book[2];
+			books[0] = book1;
+			books[1] = book3;
+
+			Assert.That(lib.SearchBookAuthor("Candy")[0], Is.EqualTo(books[0]));
+			Assert.That(lib.SearchBookAuthor("Candy")[1], Is.EqualTo(books[1]));
+		}
+
+		[Test]
 		public void Borrow3()
 		{
 			Library lib = new Library();
