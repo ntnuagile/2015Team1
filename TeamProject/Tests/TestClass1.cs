@@ -30,8 +30,8 @@ namespace TeamProject.Tests
 			Library lib = new Library();
 			Book book1 = new Book();
 			Book book2 = new Book();
-			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
-			book2.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book2.SetBookData(new string[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
 
 			Assert.That(lib.AddBook(book1), Is.EqualTo(true));
 			Assert.That(lib.AddBook(book2), Is.EqualTo(true));
@@ -68,7 +68,7 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book1 = new Book();
-			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
 
 			lib.AddBook(book1);
 
@@ -241,8 +241,8 @@ namespace TeamProject.Tests
 			Library lib = new Library();
 			Book book1 = new Book();
 			Book book2 = new Book();
-			book1.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
-			book2.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
+			book1.SetBookData(new string[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book2.SetBookData(new string[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -259,9 +259,9 @@ namespace TeamProject.Tests
 			Book book2 = new Book();
 			Book book3 = new Book();
 
-			book1.SetBookData(new String[] { "1", "Learning Japanese", "Candy", "Youtube", "Gong Guan Library" }, 520);
-			book2.SetBookData(new String[] { "2", "Computer Science", "Ken", "Pearson", "Gong Guan Library" }, 448);
-			book3.SetBookData(new String[] { "3", "Something Incredible", "Candy", "Happy", "Gong Guan Library" }, 361);
+			book1.SetBookData(new string[] { "1", "Learning Japanese", "Candy", "Youtube", "Gong Guan Library" }, 520);
+			book2.SetBookData(new string[] { "2", "Computer Science", "Ken", "Pearson", "Gong Guan Library" }, 448);
+			book3.SetBookData(new string[] { "3", "Something Incredible", "Candy", "Happy", "Gong Guan Library" }, 361);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -379,7 +379,7 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book3 = new Book();
-			book3.SetBookData(new String[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
+			book3.SetBookData(new string[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
 			lib.AddBook(book3);
 
 			Member Jeremy = new Member();
@@ -394,13 +394,13 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book = new Book();
-			String book_id = "123";
-			book.SetBookData(new String[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
+			string book_id = "123";
+			book.SetBookData(new string[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
 			lib.AddBook(book);
 
 			MemberBase mb = new MemberBase();
 			Member m = new Member();
-			String name = "Jerry";
+			string name = "Jerry";
 			m.SetName(name);
 			m.SetPassword("123");
 			m.SetIsAdministrator(false);
@@ -419,7 +419,7 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book1 = new Book();
-			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
 
 			Member Candy = new Member ();
 			Candy.SetName("Candy");
@@ -436,7 +436,7 @@ namespace TeamProject.Tests
 		{
 			Library lib = new Library();
 			Book book4 = new Book();
-			book4.SetBookData(new String[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
+			book4.SetBookData(new string[] { "222", "What do you mean", "Justin Bieber", "Kkbox", "Gong Guan Library" }, 236);
 			lib.AddBook(book4);
 
 			Member Andy = new Member ();
@@ -454,7 +454,7 @@ namespace TeamProject.Tests
 			Library lib = new Library();
 
 			Book book3 = new Book();
-			book3.SetBookData(new String[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
+			book3.SetBookData(new string[] { "1515151515", "Knicks", "Author", "Carmelo Anthony", "New York" }, 2015);
 			lib.AddBook(book3);
 
 			Member Mary = new Member();
@@ -473,8 +473,8 @@ namespace TeamProject.Tests
         {
             Library lib = new Library();
             Book book = new Book();
-            String book_id = "123";
-            book.SetBookData(new String[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
+			string book_id = "123";
+            book.SetBookData(new string[] { book_id, "Computer Science", "CSIE", "NTNU", "Taiwan" }, 2015);
             lib.AddBook(book);
             book.SetAvailible(false);
             Assert.That(lib.ReturnBook("456"), Is.EqualTo("Book not found"));
@@ -491,9 +491,9 @@ namespace TeamProject.Tests
 			Book book2 = new Book();
 			Book book3 = new Book();
 
-			book1.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
-			book2.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
-			book3.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book1.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book2.SetBookData(new string[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book3.SetBookData(new string[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -522,9 +522,9 @@ namespace TeamProject.Tests
 			Book book02 = new Book();
 			Book book03 = new Book();
 
-			book01.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
-			book02.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
-			book03.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book01.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book02.SetBookData(new string[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book03.SetBookData(new string[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
 
 			lib2.AddBook(book01);
 			lib2.AddBook(book02);
@@ -548,9 +548,9 @@ namespace TeamProject.Tests
 			Book book2 = new Book();
 			Book book3 = new Book();
 
-			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
-			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
-			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+			book1.SetBookData(new string[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new string[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new string[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -579,9 +579,9 @@ namespace TeamProject.Tests
 			Book book2 = new Book();
 			Book book3 = new Book();
 
-			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
-			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
-			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+			book1.SetBookData(new string[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new string[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new string[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -618,9 +618,9 @@ namespace TeamProject.Tests
 			Book book2 = new Book();
 			Book book3 = new Book();
 
-			book1.SetBookData(new String[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
-			book2.SetBookData(new String[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
-			book3.SetBookData(new String[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
+			book1.SetBookData(new string[] { "1", "Happy New Year", "Taipei", "Mayor Ko", "Gong Guan Library" }, 344);
+			book2.SetBookData(new string[] { "2", "Merry X'mas", "Taichung", "Mayor Lin", "Gong Guan Library" }, 487);
+			book3.SetBookData(new string[] { "3", "Happy Mother's Day", "Tainan", "Mayor Lai", "Gong Guan Library" }, 664);
 
 			lib.AddBook(book1);
 			lib.AddBook(book2);
@@ -657,9 +657,9 @@ namespace TeamProject.Tests
 			Book book02 = new Book();
 			Book book03 = new Book();
 
-			book01.SetBookData(new String[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
-			book02.SetBookData(new String[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
-			book03.SetBookData(new String[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book01.SetBookData(new string[] { "1", "This is a Book", "Author", "Google", "Gong Guang Library" }, 200);
+			book02.SetBookData(new string[] { "2", "Computer Science", "Author", "Pearson", "Gong Guang Library" }, 1000);
+			book03.SetBookData(new string[] { "3", "Computer Science2", "Author", "Pearson", "Gong Guang Library" }, 1000);
 
 			book01.SetTopic("Internet");
 			book02.SetTopic("Computer");

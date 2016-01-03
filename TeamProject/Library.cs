@@ -37,7 +37,7 @@ namespace TeamProject
 			if (numofbooks == maxBookNum)
 				return false;
 			books[numofbooks] = add;
-			books[numofbooks].SetDate(DateTime.Now);
+			books[numofbooks].SetAddTime(DateTime.Now);
 			books[numofbooks].SetID(idCounter_);
 			idCounter_ += 1;
 			numofbooks += 1;
@@ -101,7 +101,7 @@ namespace TeamProject
 			// FindBookIndexbyID returns the book's index in the array
 		}
 
-		public int[] SearchTitle(String title)
+		public int[] SearchTitle(String title) //return ID
 		{
 			int[] findID = new int [maxFindNum];
 			int counter = 0;
